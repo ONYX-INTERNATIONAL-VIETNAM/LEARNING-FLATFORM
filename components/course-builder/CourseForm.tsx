@@ -35,23 +35,12 @@ interface CourseFormData {
   image: string;
 }
 
-const CourseForm = () => {
-  const [formData, setFormData] = useState<CourseFormData>({
-    title: "",
-    shortName: "",
-    category: "",
-    description: "",
-    summary: "",
-    startDate: "",
-    endDate: "",
-    enrollmentKey: "",
-    visible: true,
-    selfEnrollment: true,
-    maxStudents: "",
-    tags: [],
-    image: "",
-  });
+interface CourseFormProps {
+  formData: CourseFormData;
+  setFormData: React.Dispatch<React.SetStateAction<CourseFormData>>;
+}
 
+const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
   const [newTag, setNewTag] = useState("");
 
   const addTag = () => {
@@ -74,7 +63,6 @@ const CourseForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Course data:", formData);
-    // Handle course creation
   };
 
   return (
