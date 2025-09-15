@@ -59,7 +59,7 @@ const StudentSidebar = ({ className }: SidebarProps) => {
       </nav>
 
       {/* User section */}
-      <div className="border-t p-4">
+      <Link href="/student/profile" className="border-t p-4">
         <div className="flex items-center space-x-3 mb-3">
           <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
             <span className="text-sm font-semibold text-accent">HS</span>
@@ -85,7 +85,7 @@ const StudentSidebar = ({ className }: SidebarProps) => {
             Đăng xuất
           </Button>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
