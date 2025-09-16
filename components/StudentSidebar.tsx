@@ -59,9 +59,8 @@ const StudentSidebar = ({ className }: SidebarProps) => {
       </nav>
 
       {/* User section */}
-      <Link href="/student/profile">
-        <div className="border-t p-4">
-          <div className="flex items-center space-x-3 mb-3">
+      <div className="border-t p-4">
+          <Link href="/student/profile" className="flex items-center space-x-3 mb-3">
             <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
               <span className="text-sm font-semibold text-accent">HS</span>
             </div>
@@ -71,23 +70,21 @@ const StudentSidebar = ({ className }: SidebarProps) => {
                 student@onyx.edu
               </p>
             </div>
-          </div>
-
-          <div className="space-y-1">
-            <Link
-              href="/student/settings"
-              className="flex items-center px-3 py-2 text-sm rounded-lg hover:bg-accent/10 hover:text-accent transition-colors"
-            >
-              <Settings className="mr-3 h-4 w-4" />
-              Cài đặt
-            </Link>
-            <Button className="flex items-center w-full px-3 py-2 text-sm rounded-lg hover:bg-destructive/10 hover:text-destructive transition-colors">
-              <LogOut className="mr-3 h-4 w-4" />
-              Đăng xuất
-            </Button>
-          </div>
+          </Link>
+        <div className="space-y-1">
+          <Link
+            href="/student/settings"
+            className="flex items-center px-3 py-2 text-sm rounded-lg hover:bg-accent/10 hover:text-accent transition-colors"
+          >
+            <Settings className="mr-3 h-4 w-4" />
+            Cài đặt
+          </Link>
+          <Button className="flex items-center w-full px-3 py-2 text-sm rounded-lg hover:bg-destructive/10 hover:text-destructive transition-colors">
+            <LogOut className="mr-3 h-4 w-4" />
+            Đăng xuất
+          </Button>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
