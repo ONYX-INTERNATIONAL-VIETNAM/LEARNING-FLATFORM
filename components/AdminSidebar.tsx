@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const adminNavItems = [
   {
@@ -91,13 +92,18 @@ function AdminSidebar() {
 
   return (
     <div className="flex h-full w-64 flex-col bg-white border-r border-gray-200">
-      <div className="flex items-center gap-2 p-6 border-b border-gray-200">
-        <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-          <Shield className="w-5 h-5 text-white" />
+      <div className="flex items-center gap-1 p-[6px] border-b border-gray-200">
+        <div className="w-14 h-14 flex items-center justify-center">
+          <Image
+            src="/images/onyx-logo.webp"
+            alt="ONYX"
+            width={120}
+            height={40}
+            className="h-auto w-auto"
+          />
         </div>
         <div>
           <h2 className="font-semibold text-gray-900">Admin Panel</h2>
-          <p className="text-xs text-gray-500">System Management</p>
         </div>
       </div>
 

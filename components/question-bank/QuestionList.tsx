@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -42,8 +42,15 @@ import {
   CheckCircle,
   FileText,
   MessageSquare,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
 } from "lucide-react";
+import { ConfirmDialog } from "../ConfirmDialog";
+import Link from "next/link";
 
+// ====================== FAKE DATA ======================
 const questions = [
   {
     id: "1",
@@ -81,8 +88,22 @@ const questions = [
     created: "2024-01-17",
     used: 12,
   },
+  // 👉 thêm dữ liệu giả để test phân trang
+  ...Array.from({ length: 25 }).map((_, i) => ({
+    id: `${i + 4}`,
+    title: `Câu hỏi giả lập ${i + 4}`,
+    content: `Nội dung câu hỏi số ${i + 4}`,
+    type: i % 2 === 0 ? "multiple-choice" : "true-false",
+    category: i % 3 === 0 ? "Toán học" : i % 3 === 1 ? "Khoa học" : "Ngôn ngữ",
+    difficulty: i % 3 === 0 ? "easy" : i % 3 === 1 ? "medium" : "hard",
+    points: 1 + (i % 5),
+    tags: ["tag1", "tag2"],
+    created: "2024-02-01",
+    used: Math.floor(Math.random() * 20),
+  })),
 ];
 
+// ====================== CONFIG ======================
 const questionTypeIcons = {
   "multiple-choice": HelpCircle,
   "true-false": CheckCircle,
@@ -98,12 +119,41 @@ const difficultyColors = {
   hard: "bg-red-100 text-red-700",
 };
 
+// ====================== COMPONENT ======================
 const QuestionList = () => {
   const [selectedQuestions, setSelectedQuestions] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5;
+
+  // ====================== FILTER + SEARCH ======================
+  const filteredQuestions = useMemo(() => {
+    return questions.filter((q) => {
+      const matchSearch =
+        q.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        q.content.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchCategory =
+        categoryFilter === "all" || q.category.toLowerCase() === categoryFilter;
+
+      const matchType = typeFilter === "all" || q.type === typeFilter;
+
+      return matchSearch && matchCategory && matchType;
+    });
+  }, [searchTerm, categoryFilter, typeFilter]);
+
+  // ====================== PAGINATION ======================
+  const totalPages = Math.ceil(filteredQuestions.length / pageSize);
+  const paginatedQuestions = filteredQuestions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
+  // ====================== TOGGLE ======================
   const toggleQuestion = (questionId: string) => {
     setSelectedQuestions((prev) =>
       prev.includes(questionId)
@@ -114,20 +164,29 @@ const QuestionList = () => {
 
   const toggleAll = () => {
     setSelectedQuestions(
-      selectedQuestions.length === questions.length
+      selectedQuestions.length === filteredQuestions.length
         ? []
-        : questions.map((q) => q.id)
+        : filteredQuestions.map((q) => q.id)
     );
   };
 
+  const handleDelete = (id: string) => {
+    console.log("Xóa câu hỏi với id:", id);
+
+  };
+
+  const handleDuplicate = (question: any) => {
+    console.log("Sao chép câu hỏi:", question);
+  };
+
+  // ====================== RENDER ======================
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">Ngân hàng câu hỏi</h2>
-          <p className="text-gray-600">
-            Quản lý và tổ chức câu hỏi cho các bài kiểm tra
-          </p>
+          <p className="text-gray-600">Quản lý và tổ chức câu hỏi cho các bài kiểm tra</p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline">
@@ -138,10 +197,13 @@ const QuestionList = () => {
             <Download className="w-4 h-4 mr-2" />
             Export
           </Button>
-          <Button>
-            <Plus className="w-4 h-4 mr-2" />
-            Tạo câu hỏi
-          </Button>
+          <Link href={"/admin/question-bank/create"}>
+            <Button>
+              <Plus className="w-4 h-4 mr-2" />
+              Tạo câu hỏi
+            </Button>
+          </Link>
+
         </div>
       </div>
 
@@ -205,28 +267,43 @@ const QuestionList = () => {
         <CardContent>
           <div className="flex items-center gap-4 mb-4">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
                 placeholder="Tìm kiếm câu hỏi..."
-                className="pl-10"
+                className="pl-10 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm "
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setCurrentPage(1);
+                }}
               />
             </div>
-            <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-              <SelectTrigger className="w-48">
+            <Select
+              value={categoryFilter}
+              onValueChange={(v) => {
+                setCategoryFilter(v);
+                setCurrentPage(1);
+              }}
+            >
+              <SelectTrigger className="w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue placeholder="Tất cả danh mục" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">Tất cả danh mục</SelectItem>
-                <SelectItem value="math">Toán học</SelectItem>
-                <SelectItem value="science">Khoa học</SelectItem>
-                <SelectItem value="language">Ngôn ngữ</SelectItem>
-                <SelectItem value="geography">Địa lý</SelectItem>
+                <SelectItem value="toán học">Toán học</SelectItem>
+                <SelectItem value="khoa học">Khoa học</SelectItem>
+                <SelectItem value="ngôn ngữ">Ngôn ngữ</SelectItem>
+                <SelectItem value="địa lý">Địa lý</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-48">
+            <Select
+              value={typeFilter}
+              onValueChange={(v) => {
+                setTypeFilter(v);
+                setCurrentPage(1);
+              }}
+            >
+              <SelectTrigger className="w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue placeholder="Tất cả loại" />
               </SelectTrigger>
               <SelectContent>
@@ -243,6 +320,7 @@ const QuestionList = () => {
             </Button>
           </div>
 
+          {/* Bulk actions */}
           {selectedQuestions.length > 0 && (
             <div className="flex items-center gap-4 p-3 bg-blue-50 border border-blue-200 rounded-lg mb-4">
               <span className="text-sm font-medium text-blue-800">
@@ -255,24 +333,25 @@ const QuestionList = () => {
                 <Button size="sm" variant="outline">
                   Export
                 </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="text-red-600 bg-transparent"
-                >
+                <Button size="sm" variant="outline" className="text-red-600">
                   Xóa
                 </Button>
               </div>
             </div>
           )}
 
+          {/* Table */}
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-12">
                   <Checkbox
-                    checked={selectedQuestions.length === questions.length}
+                    checked={
+                      selectedQuestions.length > 0 &&
+                      selectedQuestions.length === filteredQuestions.length
+                    }
                     onCheckedChange={toggleAll}
+                    className="bg-white border border-gray-300 text-gray-900"
                   />
                 </TableHead>
                 <TableHead>Câu hỏi</TableHead>
@@ -285,32 +364,24 @@ const QuestionList = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {questions.map((question) => {
-                const TypeIcon =
-                  questionTypeIcons[
-                    question.type as keyof typeof questionTypeIcons
-                  ];
+              {paginatedQuestions.map((q) => {
+                const TypeIcon = questionTypeIcons[q.type as keyof typeof questionTypeIcons];
                 return (
-                  <TableRow key={question.id}>
+                  <TableRow key={q.id}>
                     <TableCell>
                       <Checkbox
-                        checked={selectedQuestions.includes(question.id)}
-                        onCheckedChange={() => toggleQuestion(question.id)}
+                        checked={selectedQuestions.includes(q.id)}
+                        onCheckedChange={() => toggleQuestion(q.id)}
+                        className="bg-white border border-gray-300 text-gray-900"
                       />
                     </TableCell>
                     <TableCell>
                       <div className="space-y-1">
-                        <div className="font-medium">{question.title}</div>
-                        <div className="text-sm text-gray-500 truncate max-w-md">
-                          {question.content}
-                        </div>
+                        <div className="font-medium">{q.title}</div>
+                        <div className="text-sm text-gray-500 truncate max-w-md">{q.content}</div>
                         <div className="flex flex-wrap gap-1">
-                          {question.tags.map((tag) => (
-                            <Badge
-                              key={tag}
-                              variant="outline"
-                              className="text-xs"
-                            >
+                          {q.tags.map((tag) => (
+                            <Badge key={tag} variant="outline" className="text-xs">
                               {tag}
                             </Badge>
                           ))}
@@ -321,60 +392,55 @@ const QuestionList = () => {
                       <div className="flex items-center gap-2">
                         <TypeIcon className="w-4 h-4 text-gray-500" />
                         <span className="text-sm">
-                          {question.type === "multiple-choice"
+                          {q.type === "multiple-choice"
                             ? "Trắc nghiệm"
-                            : question.type === "true-false"
-                            ? "Đúng/Sai"
-                            : question.type === "short-answer"
-                            ? "Trả lời ngắn"
-                            : "Khác"}
+                            : q.type === "true-false"
+                              ? "Đúng/Sai"
+                              : q.type === "short-answer"
+                                ? "Trả lời ngắn"
+                                : "Khác"}
                         </span>
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Badge variant="secondary">{question.category}</Badge>
+                      <Badge variant="secondary">{q.category}</Badge>
                     </TableCell>
                     <TableCell>
-                      <Badge
-                        className={
-                          difficultyColors[
-                            question.difficulty as keyof typeof difficultyColors
-                          ]
-                        }
-                      >
-                        {question.difficulty === "easy"
+                      <Badge className={difficultyColors[q.difficulty as keyof typeof difficultyColors]}>
+                        {q.difficulty === "easy"
                           ? "Dễ"
-                          : question.difficulty === "medium"
-                          ? "TB"
-                          : "Khó"}
+                          : q.difficulty === "medium"
+                            ? "TB"
+                            : "Khó"}
                       </Badge>
                     </TableCell>
-                    <TableCell>{question.points}</TableCell>
-                    <TableCell>{question.used} lần</TableCell>
+                    <TableCell>{q.points}</TableCell>
+                    <TableCell>{q.used} lần</TableCell>
                     <TableCell className="text-right">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" className="h-8 w-8 p-0">
+                          <Button variant="ghost" className="h-8 w-8 p-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem>
-                            <Eye className="mr-2 h-4 w-4" />
-                            Xem chi tiết
+                          <DropdownMenuItem asChild>
+                            <Link href={`/admin/question-bank/${q.id}`}>
+                              <Eye className="mr-2 h-4 w-4" />
+                              Xem chi tiết
+                            </Link>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Edit className="mr-2 h-4 w-4" />
-                            Chỉnh sửa
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => handleDuplicate(q)} className="mb-1">
                             <Copy className="mr-2 h-4 w-4" />
                             Sao chép
                           </DropdownMenuItem>
-                          <DropdownMenuItem className="text-red-600">
-                            <Trash2 className="mr-2 h-4 w-4" />
-                            Xóa
-                          </DropdownMenuItem>
+                          <ConfirmDialog
+                            title="Xóa câu hỏi"
+                            description={`Bạn có chắc chắn muốn xóa "${q.title}"?`}
+                            onConfirm={() => handleDelete(q.id)}
+                            triggerLabel="Xóa câu hỏi"
+                            triggerVariant="destructive"
+                          />
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>
@@ -383,6 +449,47 @@ const QuestionList = () => {
               })}
             </TableBody>
           </Table>
+
+          {/* Pagination */}
+          <div className="flex justify-between items-center mt-6">
+            <p className="text-sm text-gray-500">
+              Trang {currentPage} / {totalPages}
+            </p>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setCurrentPage(1)}
+                disabled={currentPage === 1}
+              >
+                <ChevronsLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setCurrentPage(totalPages)}
+                disabled={currentPage === totalPages}
+              >
+                <ChevronsRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>

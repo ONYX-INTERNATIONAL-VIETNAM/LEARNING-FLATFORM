@@ -37,13 +37,6 @@ function AdminHeader() {
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
       <div className="flex items-center gap-4">
-        <Image
-          src="/images/onyx-logo.webp"
-          alt="ONYX"
-          width={120}
-          height={40}
-          className="h-auto w-auto"
-        />
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
@@ -83,7 +76,7 @@ function AdminHeader() {
 
         <Button variant="ghost" size="sm" className="relative">
           <Bell className="w-5 h-5" />
-          <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 w-3 h-3 p-2 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
             3
           </span>
         </Button>

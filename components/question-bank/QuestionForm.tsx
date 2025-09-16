@@ -1,12 +1,10 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
@@ -19,6 +17,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, X, Upload, ImageIcon } from "lucide-react";
+import RichTextEditor from "@/components/RichTextEditor";
 
 interface Answer {
   id: string;
@@ -52,7 +51,7 @@ const QuestionForm = () => {
     id: "",
     type: "multiple-choice",
     title: "",
-    content: "",
+    content: "<p></p>",
     category: "",
     difficulty: "medium",
     points: 1,
@@ -61,7 +60,7 @@ const QuestionForm = () => {
       { id: "1", text: "", isCorrect: false },
       { id: "2", text: "", isCorrect: false },
     ],
-    explanation: "",
+    explanation: "<p></p>",
   });
 
   const [newTag, setNewTag] = useState("");
@@ -118,7 +117,7 @@ const QuestionForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Question data:", question);
-    // Handle question creation
+    // 👉 call API ở đây
   };
 
   const renderAnswerSection = () => {
@@ -152,6 +151,7 @@ const QuestionForm = () => {
                     onCheckedChange={(checked) =>
                       updateAnswer(answer.id, "isCorrect", checked)
                     }
+                    className="bg-white border border-gray-300 rounded-md shadow-sm"
                   />
                   <span className="text-xs text-gray-500">Đúng</span>
                 </div>
@@ -161,7 +161,7 @@ const QuestionForm = () => {
                     updateAnswer(answer.id, "text", e.target.value)
                   }
                   placeholder="Nhập nội dung lựa chọn"
-                  className="flex-1"
+                  className="flex-1 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
                 {question.answers.length > 2 && (
                   <Button
@@ -193,7 +193,7 @@ const QuestionForm = () => {
                 setQuestion({ ...question, answers: updatedAnswers });
               }}
             >
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -208,7 +208,7 @@ const QuestionForm = () => {
         return (
           <div className="space-y-4">
             <Label>Đáp án mẫu</Label>
-            <Textarea
+            <Input
               value={question.answers[0]?.text || ""}
               onChange={(e) => {
                 const updatedAnswers = [
@@ -217,7 +217,7 @@ const QuestionForm = () => {
                 setQuestion({ ...question, answers: updatedAnswers });
               }}
               placeholder="Nhập đáp án mẫu hoặc từ khóa chấm điểm"
-              rows={3}
+              className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
             />
           </div>
         );
@@ -226,16 +226,14 @@ const QuestionForm = () => {
         return (
           <div className="space-y-4">
             <Label>Hướng dẫn chấm điểm</Label>
-            <Textarea
+            <RichTextEditor
               value={question.answers[0]?.text || ""}
-              onChange={(e) => {
+              onChange={(html) => {
                 const updatedAnswers = [
-                  { id: "1", text: e.target.value, isCorrect: true },
+                  { id: "1", text: html, isCorrect: true },
                 ];
                 setQuestion({ ...question, answers: updatedAnswers });
               }}
-              placeholder="Nhập hướng dẫn chấm điểm cho giáo viên"
-              rows={4}
             />
           </div>
         );
@@ -254,6 +252,7 @@ const QuestionForm = () => {
           <TabsTrigger value="settings">Cài đặt</TabsTrigger>
         </TabsList>
 
+        {/* Tab: Basic */}
         <TabsContent value="basic" className="space-y-6">
           <Card>
             <CardHeader>
@@ -269,22 +268,16 @@ const QuestionForm = () => {
                       setQuestion({ ...question, type: value })
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="multiple-choice">
-                        Trắc nghiệm
-                      </SelectItem>
+                      <SelectItem value="multiple-choice">Trắc nghiệm</SelectItem>
                       <SelectItem value="true-false">Đúng/Sai</SelectItem>
-                      <SelectItem value="short-answer">
-                        Câu trả lời ngắn
-                      </SelectItem>
+                      <SelectItem value="short-answer">Câu trả lời ngắn</SelectItem>
                       <SelectItem value="essay">Tự luận</SelectItem>
                       <SelectItem value="matching">Nối câu</SelectItem>
-                      <SelectItem value="fill-blank">
-                        Điền vào chỗ trống
-                      </SelectItem>
+                      <SelectItem value="fill-blank">Điền vào chỗ trống</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -297,7 +290,7 @@ const QuestionForm = () => {
                       setQuestion({ ...question, category: value })
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                       <SelectValue placeholder="Chọn danh mục" />
                     </SelectTrigger>
                     <SelectContent>
@@ -320,20 +313,17 @@ const QuestionForm = () => {
                     setQuestion({ ...question, title: e.target.value })
                   }
                   placeholder="Nhập tiêu đề ngắn gọn cho câu hỏi"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="content">Nội dung câu hỏi *</Label>
-                <Textarea
-                  id="content"
+                <RichTextEditor
                   value={question.content}
-                  onChange={(e) =>
-                    setQuestion({ ...question, content: e.target.value })
+                  onChange={(html) =>
+                    setQuestion({ ...question, content: html })
                   }
-                  placeholder="Nhập nội dung câu hỏi"
-                  rows={4}
-                  required
                 />
               </div>
 
@@ -356,6 +346,7 @@ const QuestionForm = () => {
           </Card>
         </TabsContent>
 
+        {/* Tab: Answers */}
         <TabsContent value="answers" className="space-y-6">
           <Card>
             <CardHeader>
@@ -369,18 +360,17 @@ const QuestionForm = () => {
               <CardTitle>Giải thích đáp án</CardTitle>
             </CardHeader>
             <CardContent>
-              <Textarea
+              <RichTextEditor
                 value={question.explanation || ""}
-                onChange={(e) =>
-                  setQuestion({ ...question, explanation: e.target.value })
+                onChange={(html) =>
+                  setQuestion({ ...question, explanation: html })
                 }
-                placeholder="Nhập giải thích cho đáp án (hiển thị sau khi học sinh trả lời)"
-                rows={3}
               />
             </CardContent>
           </Card>
         </TabsContent>
 
+        {/* Tab: Settings */}
         <TabsContent value="settings" className="space-y-6">
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
@@ -403,6 +393,7 @@ const QuestionForm = () => {
                           points: Number.parseFloat(e.target.value) || 0,
                         })
                       }
+                      className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                     />
                   </div>
                   <div className="space-y-2">
@@ -413,7 +404,7 @@ const QuestionForm = () => {
                         setQuestion({ ...question, difficulty: value })
                       }
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm w-full">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -437,9 +428,10 @@ const QuestionForm = () => {
                     value={newTag}
                     onChange={(e) => setNewTag(e.target.value)}
                     placeholder="Thêm thẻ từ khóa"
-                    onKeyPress={(e) =>
+                    onKeyDown={(e) =>
                       e.key === "Enter" && (e.preventDefault(), addTag())
                     }
+                    className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                   />
                   <Button type="button" onClick={addTag} variant="outline">
                     <Plus className="w-4 h-4" />
