@@ -47,7 +47,7 @@ const adminNavItems = [
   },
   {
     title: "Báo cáo & Thống kê",
-    href: "/admin/reports",
+    href: "/admin/reports/overview",
     icon: BarChart3,
   },
   {

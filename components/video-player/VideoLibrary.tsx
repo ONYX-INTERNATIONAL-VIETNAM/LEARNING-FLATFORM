@@ -163,13 +163,13 @@ const VideoLibrary = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
                 placeholder="Tìm kiếm video..."
-                className="pl-10"
+                className="pl-10 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-48">
+              <SelectTrigger className="w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue placeholder="Trạng thái" />
               </SelectTrigger>
               <SelectContent>
@@ -180,7 +180,7 @@ const VideoLibrary = () => {
               </SelectContent>
             </Select>
             <Select value={qualityFilter} onValueChange={setQualityFilter}>
-              <SelectTrigger className="w-48">
+              <SelectTrigger className="w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue placeholder="Chất lượng" />
               </SelectTrigger>
               <SelectContent>
