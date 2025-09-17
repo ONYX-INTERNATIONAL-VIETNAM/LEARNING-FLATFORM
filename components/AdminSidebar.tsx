@@ -10,6 +10,7 @@ import {
   FileText,
   HelpCircle,
   MessageSquare,
+  Package,
   Settings,
   Shield,
   Users,
@@ -31,6 +32,11 @@ const adminNavItems = [
     icon: Users,
   },
   {
+    title: "Quản lý sản phẩm",
+    href: "/admin/products",
+    icon: Package,
+  },
+  {
     title: "Quản lý khóa học",
     href: "/admin/courses",
     icon: BookOpen,
@@ -47,17 +53,17 @@ const adminNavItems = [
   },
   {
     title: "Báo cáo & Thống kê",
-    href: "/admin/reports/overview",
+    href: "/admin/reports",
     icon: BarChart3,
   },
-  {
-    title: "Tin nhắn hệ thống",
-    href: "/admin/messages",
-    icon: MessageSquare,
-  },
+  // {
+  //   title: "Tin nhắn hệ thống",
+  //   href: "/admin/messages",
+  //   icon: MessageSquare,
+  // },
   {
     title: "Lịch học",
-    href: "/admin/calendar",
+    href: "/admin/schedule",
     icon: Calendar,
   },
   {

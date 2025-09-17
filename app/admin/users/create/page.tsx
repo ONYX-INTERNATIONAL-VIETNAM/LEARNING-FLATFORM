@@ -13,7 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { UserPlus } from "lucide-react";
+import { UserPlus, ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // ====================== SCHEMA ======================
 const userSchema = z.object({
@@ -30,6 +31,8 @@ type UserForm = z.infer<typeof userSchema>;
 
 // ====================== PAGE ======================
 export default function CreateUserPage() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -46,16 +49,38 @@ export default function CreateUserPage() {
   const onSubmit = (data: UserForm) => {
     console.log("New user:", data);
     alert("Người dùng mới đã được tạo!");
+    router.push("/admin/users");
   };
 
   return (
     <div className="min-h-screen p-6 bg-slate-50 dark:bg-slate-900">
-      <div className="max-w-3xl mx-auto">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white">
-              <UserPlus className="h-5 w-5" />
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               Thêm người dùng mới
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              Điền đầy đủ thông tin để tạo người dùng trong hệ thống
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={() => router.push("/admin/users")}
+            className="flex items-center"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Quay lại
+          </Button>
+        </div>
+
+        {/* Form */}
+        <Card className="shadow-lg border border-gray-200 dark:border-gray-700">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-white">
+              <UserPlus className="h-5 w-5" />
+              Thông tin người dùng
             </CardTitle>
           </CardHeader>
 
@@ -70,12 +95,10 @@ export default function CreateUserPage() {
                 <Input
                   {...register("name")}
                   placeholder="Nhập họ tên"
-                  className="bg-white border border-gray-300 text-gray-900 
-                             focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                             rounded-md shadow-sm"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-sm">{errors.name.message}</p>
+                  <p className="text-red-500 text-xs">{errors.name.message}</p>
                 )}
               </div>
 
@@ -85,12 +108,10 @@ export default function CreateUserPage() {
                 <Input
                   {...register("email")}
                   placeholder="example@email.com"
-                  className="bg-white border border-gray-300 text-gray-900 
-                             focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                             rounded-md shadow-sm"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                  <p className="text-red-500 text-xs">{errors.email.message}</p>
                 )}
               </div>
 
@@ -101,12 +122,10 @@ export default function CreateUserPage() {
                   {...register("password")}
                   type="password"
                   placeholder="Nhập mật khẩu"
-                  className="bg-white border border-gray-300 text-gray-900 
-                             focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                             rounded-md shadow-sm"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
                 {errors.password && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-xs">
                     {errors.password.message}
                   </p>
                 )}
@@ -123,7 +142,7 @@ export default function CreateUserPage() {
                   }
                   defaultValue="Học sinh"
                 >
-                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-sm">
+                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                     <SelectValue placeholder="Chọn vai trò" />
                   </SelectTrigger>
                   <SelectContent>
@@ -145,7 +164,7 @@ export default function CreateUserPage() {
                   }
                   defaultValue="active"
                 >
-                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-sm">
+                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                     <SelectValue placeholder="Chọn trạng thái" />
                   </SelectTrigger>
                   <SelectContent>
@@ -161,9 +180,7 @@ export default function CreateUserPage() {
                 <Input
                   {...register("className")}
                   placeholder="VD: 10A1"
-                  className="bg-white border border-gray-300 text-gray-900 
-                             focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                             rounded-md shadow-sm"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
               </div>
 
@@ -173,18 +190,20 @@ export default function CreateUserPage() {
                 <Input
                   {...register("joinDate")}
                   type="date"
-                  className="bg-white border border-gray-300 text-gray-900 
-                             focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                             rounded-md shadow-sm"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
               </div>
 
               {/* Nút lưu */}
-              <div className="md:col-span-2 flex justify-end pt-4">
+              <div className="md:col-span-2 flex justify-end gap-3 pt-6">
                 <Button
-                  type="submit"
-                  className="text-white shadow-md"
+                  type="button"
+                  variant="outline"
+                  onClick={() => router.push("/admin/users")}
                 >
+                  Hủy
+                </Button>
+                <Button type="submit" className="shadow-md">
                   <UserPlus className="h-4 w-4 mr-2" />
                   Lưu người dùng
                 </Button>

@@ -6,6 +6,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 interface RichTextEditorProps {
   value: string; // controlled value
   onChange: (data: string) => void;
+  placeholder?: string
 }
 
 export default function RichTextEditor({ value, onChange }: RichTextEditorProps) {
