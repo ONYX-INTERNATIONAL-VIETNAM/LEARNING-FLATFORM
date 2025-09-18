@@ -185,7 +185,7 @@ const SectionBuilder = () => {
       </div>
 
       <div className="space-y-4">
-        {sections.map((section, sectionIndex) => (
+        {sections.map((section) => (
           <Card key={section.id} className="border-l-4 border-l-accent">
             <CardHeader className="pb-3">
               <div className="flex items-center gap-3">
@@ -240,7 +240,7 @@ const SectionBuilder = () => {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {section.activities.map((activity, activityIndex) => {
+                  {section.activities.map((activity) => {
                     const activityTypeInfo = activityTypes.find(
                       (type) => type.type === activity.type
                     );

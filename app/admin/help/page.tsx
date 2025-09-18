@@ -52,7 +52,7 @@ export default function HelpPage() {
               <AccordionTrigger>Làm sao để đặt lại mật khẩu người dùng?</AccordionTrigger>
               <AccordionContent>
                 Vào mục <strong>Quản lý người dùng</strong>, chọn người cần đặt lại mật khẩu
-                và nhấn <em>"Reset password"</em>. Hệ thống sẽ gửi email đặt lại mật khẩu.
+                và nhấn <em>&quot;Reset password&quot;</em>. Hệ thống sẽ gửi email đặt lại mật khẩu.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faq-2">
@@ -66,7 +66,7 @@ export default function HelpPage() {
               <AccordionTrigger>Làm thế nào để khôi phục dữ liệu từ bản sao lưu?</AccordionTrigger>
               <AccordionContent>
                 Vào mục <strong>Sao lưu dữ liệu</strong>, chọn bản backup muốn khôi phục
-                và nhấn nút <em>"Khôi phục"</em>. Hệ thống sẽ tự động thực hiện.
+                và nhấn nút <em>&quot;Khôi phục&quot;</em>. Hệ thống sẽ tự động thực hiện.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

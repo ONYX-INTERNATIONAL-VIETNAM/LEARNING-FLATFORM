@@ -23,8 +23,6 @@ import {
   Search,
   Plus,
   MoreHorizontal,
-  Edit,
-  Trash2,
   Users,
   Eye,
   ChevronLeft,

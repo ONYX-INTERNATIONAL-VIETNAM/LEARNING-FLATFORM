@@ -7,7 +7,7 @@ export default function ExportCSV({
   getData,
   filename = "report.csv",
 }: {
-  getData: () => any[];
+  getData: () => Record<string, unknown>[];
   filename?: string;
 }) {
   const handleExport = () => {

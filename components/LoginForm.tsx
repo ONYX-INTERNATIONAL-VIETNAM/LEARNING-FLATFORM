@@ -59,6 +59,8 @@ const LoginForm = () => {
         setError("Email hoặc mật khẩu không đúng.");
       }
     } catch (error) {
+      console.log(error);
+      
       setError("Đã có lỗi xảy ra. Vui lòng thử lại.");
     } finally {
       setIsLoading(false);

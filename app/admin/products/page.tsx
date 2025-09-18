@@ -3,9 +3,7 @@
 import { useState } from "react";
 import {
     Plus,
-    Pencil,
     Eye,
-    Trash2,
     BookOpen,
     FileText,
     ChevronsLeft,
@@ -44,6 +42,7 @@ import {
     TooltipContent,
 } from "@/components/ui/tooltip";
 import Link from "next/link";
+import Image from "next/image";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 
 type Product = {
@@ -66,7 +65,7 @@ const MOCK_PRODUCTS: Product[] = Array.from({ length: 30 }).map((_, i) => ({
     status: i % 4 === 0 ? "draft" : "published",
     createdAt: "2025-09-12",
     author: i % 2 === 0 ? "Alice Teacher" : "Bob Teacher",
-    thumbnail: "https://i.pravatar.cc/100?img=" + (i + 10),
+    thumbnail: "/images/avatar.jpg",
 }));
 
 export default function ProductListPage() {
@@ -147,7 +146,9 @@ export default function ProductListPage() {
                                     <TableRow key={p.id}>
                                         <TableCell>
                                             {p.thumbnail ? (
-                                                <img
+                                                <Image
+                                                    width={100}
+                                                    height={100}
                                                     src={p.thumbnail}
                                                     alt={p.name}
                                                     className="w-14 h-14 rounded-md object-cover border"

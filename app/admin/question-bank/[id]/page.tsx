@@ -10,7 +10,6 @@ import {
   Save,
   X,
   Edit,
-  Trash2,
   Plus,
 } from "lucide-react";
 import { ConfirmDialog } from "@/components/ConfirmDialog";

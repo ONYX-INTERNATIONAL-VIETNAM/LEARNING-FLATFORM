@@ -9,13 +9,7 @@ import Link from "next/link";
 import { Trash2, Star } from "lucide-react";
 import { CartProvider } from "@/components/cart/CartContext";
 import { Input } from "@/components/ui/input";
-import { motion } from "framer-motion";
 
-// Animation config cho Hero
-const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  };
 
 // ======= Fake data =======
 const CART_ITEMS = [

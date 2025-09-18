@@ -5,11 +5,9 @@ import {
   BarChart3,
   Bell,
   BookOpen,
-  Calendar,
   Database,
   FileText,
   HelpCircle,
-  MessageSquare,
   Package,
   Settings,
   Shield,
@@ -61,11 +59,11 @@ const adminNavItems = [
   //   href: "/admin/messages",
   //   icon: MessageSquare,
   // },
-  {
-    title: "Lịch học",
-    href: "/admin/schedule",
-    icon: Calendar,
-  },
+  // {
+  //   title: "Lịch học",
+  //   href: "/admin/schedule",
+  //   icon: Calendar,
+  // },
   {
     title: "Thông báo",
     href: "/admin/notifications",

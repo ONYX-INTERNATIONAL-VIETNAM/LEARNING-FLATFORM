@@ -10,8 +10,9 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import type { LucideIcon } from "lucide-react";
 
-const achievements = [
+const achievements: Achievement[] = [
   {
     id: 1,
     title: "Học sinh xuất sắc",
@@ -50,8 +51,18 @@ const achievements = [
   },
 ];
 
+interface Achievement {
+  id: number;
+  title: string;
+  description: string;
+  icon: LucideIcon; // kiểu cho icon từ lucide-react
+  color: string;
+  date: string;
+  course: string;
+}
+
 export default function AchievementsPage() {
-  const [selectedAchievement, setSelectedAchievement] = useState<any>(null);
+  const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
 
   return (
     <div className="p-6 space-y-6">

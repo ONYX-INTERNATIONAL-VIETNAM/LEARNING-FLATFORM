@@ -26,7 +26,7 @@ type Props = {
 };
 
 export default function CourseDetailSheet({
-  open, onOpenChange, courseId, weekDays, dayBuckets, courses, teachers,
+  open, onOpenChange, courseId, dayBuckets, courses, teachers,
 }: Props) {
   const meta = courseId ? courseMeta[courseId] : undefined;
   const courseName =

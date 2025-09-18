@@ -136,7 +136,7 @@ export default function MessagesPage() {
 
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                    {selected.messages.map((m, idx) => (
+                    {selected.messages.map((m) => (
                         <div
                             key={m.id}
                             className={`flex ${m.sender === "me" ? "justify-end" : "justify-start"}`}

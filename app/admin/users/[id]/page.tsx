@@ -18,7 +18,6 @@ import {
     Trophy,
     Clock,
     Pencil,
-    KeyRound,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {

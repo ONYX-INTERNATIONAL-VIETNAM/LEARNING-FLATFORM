@@ -32,7 +32,6 @@ import {
   Filter,
   MoreHorizontal,
   Edit,
-  Trash2,
   Copy,
   Eye,
   Download,
@@ -51,7 +50,7 @@ import { ConfirmDialog } from "../ConfirmDialog";
 import Link from "next/link";
 
 // ====================== FAKE DATA ======================
-const questions = [
+const questions: Question[] = [
   {
     id: "1",
     title: "Phép cộng cơ bản",
@@ -93,9 +92,9 @@ const questions = [
     id: `${i + 4}`,
     title: `Câu hỏi giả lập ${i + 4}`,
     content: `Nội dung câu hỏi số ${i + 4}`,
-    type: i % 2 === 0 ? "multiple-choice" : "true-false",
+    type: (i % 2 === 0 ? "multiple-choice" : "true-false") as "multiple-choice" | "true-false",
     category: i % 3 === 0 ? "Toán học" : i % 3 === 1 ? "Khoa học" : "Ngôn ngữ",
-    difficulty: i % 3 === 0 ? "easy" : i % 3 === 1 ? "medium" : "hard",
+    difficulty: (i % 3 === 0 ? "easy" : i % 3 === 1 ? "medium" : "hard") as "easy" | "medium" | "hard",
     points: 1 + (i % 5),
     tags: ["tag1", "tag2"],
     created: "2024-02-01",
@@ -118,6 +117,19 @@ const difficultyColors = {
   medium: "bg-yellow-100 text-yellow-700",
   hard: "bg-red-100 text-red-700",
 };
+
+interface Question {
+  id: string;
+  title: string;
+  content: string;
+  type: "multiple-choice" | "true-false" | "short-answer" | "essay" | "matching" | "fill-blank";
+  category: string;
+  difficulty: "easy" | "medium" | "hard";
+  points: number;
+  tags: string[];
+  created: string;
+  used: number;
+}
 
 // ====================== COMPONENT ======================
 const QuestionList = () => {
@@ -175,7 +187,7 @@ const QuestionList = () => {
 
   };
 
-  const handleDuplicate = (question: any) => {
+  const handleDuplicate = (question: Question) => {
     console.log("Sao chép câu hỏi:", question);
   };
 

@@ -8,7 +8,7 @@ import { ArrowLeft } from "lucide-react";
 export default function CreateProductPage() {
   const router = useRouter();
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit = (data: unknown) => {
     console.log("Create product:", data);
 
     // 👉 TODO: Gọi API backend để lưu sản phẩm

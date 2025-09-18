@@ -3,6 +3,13 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+interface Conversation {
+  id: number;
+  name: string;
+  lastMessage: string;
+  avatar: string;
+}
+
 const conversations = {
   starred: [
     { id: 1, name: "Giáo viên Toán", lastMessage: "Nhớ làm bài tập nhé!", avatar: "" },
@@ -15,7 +22,11 @@ const conversations = {
   ],
 };
 
-export function ConversationList({ onSelect }: { onSelect: (c: any) => void }) {
+export function ConversationList({
+  onSelect,
+}: {
+  onSelect: (c: Conversation) => void;
+}) {
   return (
     <Accordion type="multiple" defaultValue={["starred", "group", "private"]}>
       {/* Đã ghim */}

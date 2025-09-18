@@ -9,8 +9,40 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Save, Eye } from "lucide-react";
 import Link from "next/link";
 
+interface CourseFormData {
+  title: string;
+  shortName: string;
+  category: string;
+  description: string;
+  summary: string;
+  startDate: string;
+  endDate: string;
+  enrollmentKey: string;
+  visible: boolean;
+  selfEnrollment: boolean;
+  maxStudents: string;
+  tags: string[];
+  image: string;
+}
+
 export default function CreateCoursePage() {
   const [activeTab, setActiveTab] = useState("basic");
+
+  const [formData, setFormData] = useState<CourseFormData>({
+    title: "",
+    shortName: "",
+    category: "",
+    description: "",
+    summary: "",
+    startDate: "",
+    endDate: "",
+    enrollmentKey: "",
+    visible: true,
+    selfEnrollment: false,
+    maxStudents: "",
+    tags: [],
+    image: "",
+  });
 
   return (
     <div className="space-y-6">
@@ -51,7 +83,7 @@ export default function CreateCoursePage() {
         </TabsList>
 
         <TabsContent value="basic" className="space-y-6">
-          <CourseForm />
+          <CourseForm formData={formData} setFormData={setFormData} />
         </TabsContent>
 
         <TabsContent value="content" className="space-y-6">

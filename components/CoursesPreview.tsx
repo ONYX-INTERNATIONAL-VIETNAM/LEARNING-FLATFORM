@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, Star, ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import { useCart } from "./cart/CartContext";
 
 const COURSES = [
   {
@@ -50,7 +49,6 @@ const fmt = (n: number) =>
   );
 
 export default function CoursesPreview() {
-  const { addItem } = useCart();
 
   return (
     <section id="courses" className="py-20 px-4 bg-background">

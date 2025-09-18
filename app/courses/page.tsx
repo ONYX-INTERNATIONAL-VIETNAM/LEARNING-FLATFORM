@@ -13,18 +13,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { Search, Filter, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { CartProvider, useCart } from "@/components/cart/CartContext";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink } from "@/components/ui/pagination";
 import { Card } from "@/components/ui/card";
-
-// animation config
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
 
 interface Course {
   id: string;

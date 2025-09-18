@@ -1,7 +1,14 @@
-import QuestionForm from "@/components/question-bank/QuestionForm";
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const QuestionForm = dynamic(
+  () => import("@/components/question-bank/QuestionForm"),
+  { ssr: false }
+);
 
 const TeacherCreateQuestionPage = () => {
   return (

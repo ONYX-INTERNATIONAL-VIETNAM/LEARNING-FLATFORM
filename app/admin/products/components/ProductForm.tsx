@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
 import RichEditor from "@/components/RichTextEditor";
+import type { ProductFormData } from "../components/product";
 
 export type ProductFormProps = {
   mode: "create" | "edit";
@@ -42,7 +43,7 @@ export type ProductFormProps = {
     level?: string;
     duration?: string;
   };
-  onSubmit: (data: any) => void;
+  onSubmit: (data: ProductFormData) => void | Promise<void>;
   onCancel: () => void;
 };
 
@@ -50,7 +51,6 @@ export function ProductForm({
   mode,
   defaultValues,
   onSubmit,
-  onCancel,
 }: ProductFormProps) {
   const [types, setTypes] = useState(["Course", "Document"]);
   const [form, setForm] = useState({
@@ -242,7 +242,7 @@ export function ProductForm({
 
       <CardFooter className="flex justify-between">
         <div className="flex gap-2">
-          <Button variant="outline" onClick={() => onSubmit({ ...form, draft: true })}>
+          <Button variant="outline" onClick={() => onSubmit({ ...form, isPublished: false })}>
             Lưu nháp
           </Button>
           <Button onClick={handleSubmit}>
@@ -278,3 +278,4 @@ export function ProductForm({
     </Card>
   );
 }
+true

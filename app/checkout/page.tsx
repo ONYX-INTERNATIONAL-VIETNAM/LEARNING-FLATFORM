@@ -109,7 +109,7 @@ function CheckoutInner() {
                         <Card className="p-6 space-y-6 border shadow-sm">
                             {user ? (
                                 <div className="flex items-center gap-4">
-                                    <img
+                                    <Image
                                         src={user.avatar}
                                         alt={user.name}
                                         className="w-12 h-12 rounded-full"
@@ -144,7 +144,7 @@ function CheckoutInner() {
                                             variant="outline"
                                             className="flex items-center gap-2 justify-center py-3 rounded-md shadow-sm"
                                         >
-                                            <img
+                                            <Image
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                                                 alt="Google"
                                                 className="w-4 h-4"
@@ -155,7 +155,7 @@ function CheckoutInner() {
                                             variant="outline"
                                             className="flex items-center gap-2 justify-center py-3 rounded-md shadow-sm"
                                         >
-                                            <img
+                                            <Image
                                                 src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
                                                 alt="Facebook"
                                                 className="w-4 h-4"

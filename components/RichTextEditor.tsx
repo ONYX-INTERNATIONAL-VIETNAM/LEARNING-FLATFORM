@@ -19,6 +19,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
         }
       `}</style>
       <CKEditor
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         editor={ClassicEditor as any}
         data={value}
         onChange={(_, editor) => {

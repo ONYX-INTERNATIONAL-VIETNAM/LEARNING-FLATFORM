@@ -25,8 +25,6 @@ import {
     ChevronRight,
     ChevronsLeft,
     ChevronsRight,
-    Trash2,
-    KeyRound,
 } from "lucide-react";
 import {
     DropdownMenu,

@@ -26,7 +26,6 @@ import {
   Clock,
   Calendar as CalendarIcon,
   GraduationCap,
-  Plus,
 } from "lucide-react";
 
 // Fake events
@@ -63,10 +62,21 @@ const allEvents = [
   },
 ];
 
+interface ScheduleEvent {
+  id: string;
+  title: string;
+  start: string; // ISO datetime string
+  end: string;
+  course: string;
+  courseName: string;
+  backgroundColor: string;
+  type: string;
+}
+
 const SchedulePage = () => {
   const [courseFilter, setCourseFilter] = useState("all");
   const [calendarView, setCalendarView] = useState("dayGridMonth");
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [selectedEvent, setSelectedEvent] = useState<ScheduleEvent | null>(null);
 
   const calendarRef = useRef<FullCalendar | null>(null);
 
@@ -77,7 +87,7 @@ const SchedulePage = () => {
 
   useEffect(() => {
     if (calendarRef.current) {
-      const api = (calendarRef.current as any).getApi();
+      const api = (calendarRef.current).getApi();
       api.changeView(calendarView);
     }
   }, [calendarView]);
@@ -167,7 +177,7 @@ const SchedulePage = () => {
           customButtons={{
             today: {
               text: "Hôm nay",
-              click: () => (calendarRef.current as any).getApi().today(),
+              click: () => calendarRef.current?.getApi().today(),
             },
           }}
           titleFormat={{ year: "numeric", month: "long" }}
@@ -175,7 +185,9 @@ const SchedulePage = () => {
           height="auto"
           eventClick={(info) => {
             const event = allEvents.find((e) => e.id === info.event.id);
-            setSelectedEvent(event);
+            if (event) {
+              setSelectedEvent(event);
+            }
           }}
           viewDidMount={styleHeader}
         />

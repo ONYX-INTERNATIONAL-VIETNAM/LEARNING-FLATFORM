@@ -53,7 +53,8 @@ export default function NotificationDetailPage() {
       // 👉 TODO: gọi API cập nhật
       toast.success("Thông báo đã được cập nhật");
       setEditMode(false);
-    } catch (err) {
+    } catch (error) {
+      console.log(error);
       toast.error("Có lỗi khi cập nhật thông báo");
     }
   };
@@ -65,6 +66,8 @@ export default function NotificationDetailPage() {
       toast.success("Thông báo đã được gửi");
       router.push("/admin/notifications");
     } catch (err) {
+      console.log(err);
+      
       toast.error("Không thể gửi thông báo");
     }
   };

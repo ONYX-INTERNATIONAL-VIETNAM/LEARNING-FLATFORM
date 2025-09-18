@@ -9,7 +9,7 @@ import { ArrowLeft, Pencil } from "lucide-react";
 import { ProductForm } from "../components/ProductForm";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { toast } from "sonner";
-
+import type { ProductFormData } from "../components/product";
 // ====================== TYPES ======================
 type Product = {
   id: string;
@@ -56,15 +56,17 @@ export default function ProductDetailPage() {
   const product: Product = { ...fakeProduct, id: id as string };
 
   // Update product
-  const handleUpdate = async (data: Product) => {
-    try {
-      console.log("Update product:", data);
-      // 👉 TODO: gọi API update sản phẩm ở đây
-      toast.success("Cập nhật sản phẩm thành công   ");
-      setIsEditing(false);
-    } catch (err) {
-      toast.error("Có lỗi xảy ra khi cập nhật sản phẩm ");
-    }
+  const handleUpdate = async (data: ProductFormData) => {
+    const updated: Product = {
+      ...product, // giữ các field server có sẵn
+      ...data,    // merge field từ form
+      status: data.isPublished ? "published" : "draft",
+      updatedAt: new Date().toISOString(),
+      fileUrl: data.file ? URL.createObjectURL(data.file) : product.fileUrl,
+    };
+  
+    console.log("Update product:", updated);
+    // gọi API update
   };
 
   // Delete product
@@ -75,6 +77,7 @@ export default function ProductDetailPage() {
       toast.success("Xóa sản phẩm thành công ");
       router.push("/admin/products");
     } catch (err) {
+      console.log('err', err);
       toast.error("Không thể xóa sản phẩm ");
     }
   };

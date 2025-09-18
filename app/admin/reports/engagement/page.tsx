@@ -115,7 +115,6 @@ export default function EngagementReportPage() {
                 <tr key={rIdx}>
                   <td className="p-1 border font-medium">{row.label}</td>
                   {row.values.map((cell, cIdx) => {
-                    const intensity = Math.min(cell.value * 12, 255);
                     return (
                       <td
                         key={cIdx}

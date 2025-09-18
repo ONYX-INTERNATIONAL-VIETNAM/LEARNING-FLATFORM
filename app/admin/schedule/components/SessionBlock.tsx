@@ -27,7 +27,7 @@ const HOURS_TOTAL = HOUR_END - HOUR_START;
 
 export default function SessionBlock({
   s, dayIndex, weekDays, courses, teachers,
-  onEdit, onCommitTime, getDayIndexByClientX, timeAxisPx = 88,
+  onEdit, onCommitTime, getDayIndexByClientX,
 }: Props) {
   // vị trí gốc
   const start = new Date(s.startISO);
