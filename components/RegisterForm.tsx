@@ -91,6 +91,7 @@ const RegisterForm = () => {
                 setFormData({ ...formData, username: e.target.value })
               }
               required
+              className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
             />
           </div>
 
@@ -106,6 +107,7 @@ const RegisterForm = () => {
                   setFormData({ ...formData, firstName: e.target.value })
                 }
                 required
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
             <div className="space-y-2">
@@ -119,6 +121,7 @@ const RegisterForm = () => {
                   setFormData({ ...formData, lastName: e.target.value })
                 }
                 required
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
           </div>
@@ -134,6 +137,7 @@ const RegisterForm = () => {
                 setFormData({ ...formData, email: e.target.value })
               }
               required
+              className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
             />
           </div>
 
@@ -151,7 +155,7 @@ const RegisterForm = () => {
                 formData.emailConfirm &&
                 formData.email !== formData.emailConfirm
                   ? "border-red-500"
-                  : ""
+                  : "bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               }
               required
             />
@@ -175,6 +179,7 @@ const RegisterForm = () => {
                   setFormData({ ...formData, city: e.target.value })
                 }
                 required
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
             <div className="space-y-2">
@@ -187,11 +192,11 @@ const RegisterForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, country: e.target.value })
                 }
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 required
               />
             </div>
           </div>
-
 
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
@@ -204,6 +209,7 @@ const RegisterForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 required
               />
               <Button
@@ -314,7 +320,7 @@ const RegisterForm = () => {
                   formData.confirmPassword &&
                   formData.password !== formData.confirmPassword
                     ? "border-red-500"
-                    : ""
+                    : "bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 }
                 required
               />
@@ -338,25 +344,27 @@ const RegisterForm = () => {
               )}
           </div>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="agreeTerms"
-              checked={formData.agreeTerms}
-              onCheckedChange={(checked) =>
-                setFormData({ ...formData, agreeTerms: checked as boolean })
-              }
-              required
-            />
-            <Label htmlFor="agreeTerms" className="text-sm">
-              Tôi đồng ý với{" "}
-              <Link href="/terms" className="text-accent hover:underline">
-                Điều khoản sử dụng
-              </Link>{" "}
-              và{" "}
-              <Link href="/privacy" className="text-accent hover:underline">
-                Chính sách bảo mật
-              </Link>
-            </Label>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="agreeTerms"
+                checked={formData.agreeTerms}
+                onCheckedChange={(checked) =>
+                  setFormData({ ...formData, agreeTerms: checked as boolean })
+                }
+                required
+                className="bg-white border"
+              />
+              <Label htmlFor="agreeTerms" className="text-sm font-medium">
+                <Link href="/terms" className="text-accent hover:underline">
+                  Điều khoản sử dụng
+                </Link>{" "}
+                và{" "}
+                <Link href="/privacy" className="text-accent hover:underline">
+                  Chính sách bảo mật
+                </Link>
+              </Label>
+            </div>
           </div>
         </CardContent>
 

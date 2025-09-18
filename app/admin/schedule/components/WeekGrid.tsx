@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Course, Session, Teacher } from "../lib/types";
 import { HOUR_END, HOUR_START, ROW_PX, fmtDate } from "../lib/utils";
 import SessionBlock from "./SessionBlock";
-import CourseDetailSheet from "./CourseDetailSheet";
 
 type Props = {
   weekDays: Date[];
@@ -46,14 +45,6 @@ export default function WeekGrid({
     },
     []
   );
-  const [courseOpen, setCourseOpen] = React.useState(false);
-  const [selectedCourseId, setSelectedCourseId] = React.useState<string | null>(null);
-
-  const openCourse = React.useCallback((id: string) => {
-    console.log("[openCourse]", id);
-    setSelectedCourseId(id);
-    setCourseOpen(true);
-  }, []);
 
   return (
     <Card>
@@ -127,9 +118,7 @@ export default function WeekGrid({
                         onEdit={onEdit}
                         onCommitTime={onCommitTime}
                         getDayIndexByClientX={getDayIndexByClientX}
-                        getScrollEl={() => scrollRef.current}
                         timeAxisPx={TIME_AXIS_PX}
-                        onOpenCourse={openCourse} // <-- NEW
                       />
                     ))}
                   </div>
@@ -139,16 +128,6 @@ export default function WeekGrid({
           </div>
         </div>
       </CardContent>
-      <CourseDetailSheet
-        open={courseOpen}
-        onOpenChange={setCourseOpen}
-        courseId={selectedCourseId}
-        weekDays={weekDays}
-        dayBuckets={dayBuckets}
-        courses={courses}
-        teachers={teachers}
-      />
     </Card>
-    
   );
 }

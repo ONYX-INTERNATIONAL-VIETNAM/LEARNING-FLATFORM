@@ -6,45 +6,38 @@ const Footer = () => {
   return (
     <footer className="bg-muted/50 border-t">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo and Description */}
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Logo + Description */}
+          <div className="md:col-span-2">
+            <Link href="/" className="inline-block mb-4">
             <Image
               src="/images/onyx-logo.webp"
               alt="ONYX Learning Platform"
               width={120}
               height={40}
-              className="h-auto w-auto mb-4"
+              className="h-auto w-auto"
             />
-            <p className="text-muted-foreground text-sm mb-4 max-w-md">
+            </Link>
+            <p className="text-muted-foreground text-sm mb-6 max-w-md">
               Nền tảng giáo dục trực tuyến hàng đầu dành cho trẻ em, mang đến
               trải nghiệm học tập vui nhộn và hiệu quả.
             </p>
-            <div className="flex space-x-4">
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-accent"
-              >
-                <Facebook className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-accent"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-accent"
-              >
-                <Instagram className="h-5 w-5" />
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-accent"
-              >
-                <Youtube className="h-5 w-5" />
-              </Link>
+            <div className="flex space-x-3">
+              {[
+                { Icon: Facebook, href: "#", label: "Facebook" },
+                { Icon: Twitter, href: "#", label: "Twitter" },
+                { Icon: Instagram, href: "#", label: "Instagram" },
+                { Icon: Youtube, href: "#", label: "YouTube" },
+              ].map(({ Icon, href, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="p-2 rounded-full bg-background border hover:bg-accent/10 hover:text-accent transition"
+                >
+                  <Icon className="h-4 w-4" />
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -53,34 +46,22 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Liên kết nhanh</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/about" className="hover:text-accent transition">
                   Về chúng tôi
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/courses" className="hover:text-accent transition">
                   Khóa học
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/teachers" className="hover:text-accent transition">
                   Giáo viên
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/contact" className="hover:text-accent transition">
                   Liên hệ
                 </Link>
               </li>
@@ -92,34 +73,25 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Hỗ trợ</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/help" className="hover:text-accent transition">
                   Trung tâm trợ giúp
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
+                  href="/privacy-policy"
+                  className="hover:text-accent transition"
                 >
                   Chính sách bảo mật
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/terms" className="hover:text-accent transition">
                   Điều khoản sử dụng
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-accent"
-                >
+                <Link href="/faq" className="hover:text-accent transition">
                   FAQ
                 </Link>
               </li>
@@ -127,8 +99,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 ONYX Learning Platform. Tất cả quyền được bảo lưu.</p>
+        {/* Bottom Bar */}
+        <div className="border-t mt-10 pt-6 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} ONYX Learning Platform. Tất cả quyền được
+          bảo lưu.
         </div>
       </div>
     </footer>
