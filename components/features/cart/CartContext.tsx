@@ -31,13 +31,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // load
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) setItems(JSON.parse(raw));
+      if (typeof window !== "undefined") {
+        const raw = localStorage.getItem(KEY);
+        if (raw) setItems(JSON.parse(raw));
+      }
     } catch {}
   }, []);
   // persist
   useEffect(() => {
-    localStorage.setItem(KEY, JSON.stringify(items));
+    if (typeof window !== "undefined") {
+      localStorage.setItem(KEY, JSON.stringify(items));
+    }
   }, [items]);
 
   const addItem = (it: CartItem) =>
