@@ -17,7 +17,7 @@ import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, X, Upload, ImageIcon } from "lucide-react";
-import RichTextEditor from "@/components/RichTextEditor";
+import { RichTextEditor } from "@/components/common";
 
 interface Answer {
   id: string;

@@ -1,8 +1,7 @@
 "use client";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { CartProvider } from "@/components/cart/CartContext";
+import { Header, Footer } from "@/components/layout";
+import { CartProvider } from "@/components/features/cart/CartContext";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

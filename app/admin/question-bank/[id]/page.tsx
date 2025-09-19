@@ -12,7 +12,7 @@ import {
   Edit,
   Plus,
 } from "lucide-react";
-import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ConfirmDialog } from "@/components/common";
 import {
   Select,
   SelectContent,
@@ -21,8 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import RichEditor from "@/components/RichTextEditor";
-
+import RichTextEditor from "@/components/common/forms/RichTextEditor";
 const difficultyColors: Record<string, string> = {
   easy: "bg-green-100 text-green-800",
   medium: "bg-yellow-100 text-yellow-800",
@@ -207,7 +206,7 @@ export default function QuestionDetailPage() {
                 <div>
                   <p className="text-xs text-gray-500">Nội dung</p>
                   {isEditing ? (
-                    <RichEditor
+                    <RichTextEditor
                       value={question.content}
                       onChange={(html) =>
                         setQuestion({ ...question, content: html })

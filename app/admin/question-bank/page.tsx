@@ -1,4 +1,4 @@
-import QuestionList from "@/components/question-bank/QuestionList";
+import { QuestionList } from "@/components/features";
 
 const QuestionBankPage = () => {
   return <QuestionList />;

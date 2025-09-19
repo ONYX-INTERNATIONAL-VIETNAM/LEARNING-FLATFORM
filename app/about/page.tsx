@@ -1,9 +1,8 @@
 "use client";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header, Footer } from "@/components/layout";
 import Image from "next/image";
-import { CartProvider } from "@/components/cart/CartContext";
+import { CartProvider } from "@/components/features/cart/CartContext";
 import { Award, Users, Lightbulb, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";

@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Pencil } from "lucide-react";
 import { ProductForm } from "../components/ProductForm";
-import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ConfirmDialog } from "@/components/common";
 import { toast } from "sonner";
 import type { ProductFormData } from "../components/product";
 // ====================== TYPES ======================

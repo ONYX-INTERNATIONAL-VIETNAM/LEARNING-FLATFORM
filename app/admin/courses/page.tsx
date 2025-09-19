@@ -31,7 +31,7 @@ import {
   ChevronsRight,
 } from "lucide-react";
 import Link from "next/link";
-import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ConfirmDialog } from "@/components/common";
 
 const courses = [
   {

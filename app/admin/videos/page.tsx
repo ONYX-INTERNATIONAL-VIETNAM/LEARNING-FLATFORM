@@ -1,4 +1,4 @@
-import VideoLibrary from "@/components/video-player/VideoLibrary";
+import { VideoLibrary } from "@/components/course";
 
 const AdminVideosPage = () => {
   return <VideoLibrary />;

@@ -1,4 +1,4 @@
-import QuestionForm from "@/components/question-bank/QuestionForm";
+import { QuestionForm } from "@/components/features";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";

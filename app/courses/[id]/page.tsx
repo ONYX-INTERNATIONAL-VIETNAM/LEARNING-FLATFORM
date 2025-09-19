@@ -1,14 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header, Footer } from "@/components/layout";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Progress } from "@/components/ui/progress";
 import { Star, Users, Clock, Globe, Heart, Share2, ShoppingCart, RefreshCw } from "lucide-react";
-import { CartProvider, useCart } from "@/components/cart/CartContext";
+import { CartProvider, useCart } from "@/components/features/cart/CartContext";
 import { motion } from "framer-motion";
 
 /* ================== Types ================== */

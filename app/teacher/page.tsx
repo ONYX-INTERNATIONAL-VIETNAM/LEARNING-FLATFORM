@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import StudentList from "@/components/StudentList";
-import ClassCard from "@/components/ClassCard";
+import { StudentList } from "@/components";
+import { ClassCard } from "@/components";
 import { Button } from "@/components/ui/button";
 import {
   Users,

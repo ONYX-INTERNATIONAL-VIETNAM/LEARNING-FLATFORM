@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import CourseCard from "@/components/CourseCard";
+import CourseCard from "@/components/course/cards/CourseCard";
 import { Input } from "@/components/ui/input";
 import {
   Select,

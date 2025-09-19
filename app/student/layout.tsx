@@ -1,6 +1,5 @@
 import type React from "react";
-import StudentSidebar from "@/components/StudentSidebar";
-import StudentHeader from "@/components/StudentHeader";
+import { StudentSidebar, StudentHeader } from "@/components/layout";
 
 export default function StudentLayout({
   children,

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ProgressCard from "@/components/ProgressCard";
-import CourseCard from "@/components/CourseCard";
-import AchievementBadge from "@/components/AchievementBadge";
+import { ProgressCard } from "@/components/common/cards";
+import CourseCard from "@/components/course/cards/CourseCard";
+import AchievementBadge from "@/components/common/AchievementBadge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, Trophy, Calendar } from "lucide-react";
 

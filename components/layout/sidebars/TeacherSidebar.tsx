@@ -13,7 +13,7 @@ import {
   FileText,
   Plus,
 } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 interface SidebarProps {
   className?: string;

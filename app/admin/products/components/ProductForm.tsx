@@ -27,7 +27,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
-import RichEditor from "@/components/RichTextEditor";
+import RichTextEditor from "@/components/common/forms/RichTextEditor";
 import type { ProductFormData } from "../components/product";
 
 export type ProductFormProps = {
@@ -177,7 +177,7 @@ export function ProductForm({
         {/* Section: Nội dung */}
         <div className="space-y-2">
           <Label>Mô tả</Label>
-          <RichEditor
+          <RichTextEditor
             value={form.description}
             onChange={(html) => setForm({ ...form, description: html })}
             placeholder="Mô tả nội dung sản phẩm..."

@@ -1,4 +1,4 @@
-import VideoLibrary from "@/components/video-player/VideoLibrary"
+import { VideoLibrary } from "@/components"
 
 export default function TeacherVideosPage() {
   return <VideoLibrary />

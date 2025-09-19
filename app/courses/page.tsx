@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import CourseCard from "@/components/CourseCard";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header, Footer } from "@/components/layout";
+import { CourseCard } from "@/components/course";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -14,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
-import { CartProvider, useCart } from "@/components/cart/CartContext";
+import { CartProvider, useCart } from "@/components/features/cart/CartContext";
 import Link from "next/link";
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink } from "@/components/ui/pagination";
 import { Card } from "@/components/ui/card";

@@ -5,10 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MessageCircle, FileText, Download } from "lucide-react";
-import VideoPlayer from "@/components/VideoPlayer";
-import QuizComponent from "@/components/QuizComponent";
-import CourseHeader from "@/components/CourseHeader";
-import LessonSidebar from "@/components/LessonSidebar";
+import { VideoPlayer } from "@/components/course";
+import { QuizComponent } from "@/components/features";
+import { CourseHeader } from "@/components/course";
+import { LessonSidebar } from "@/components/layout";
 
 type LessonType = "video" | "quiz" | "assignment";
 

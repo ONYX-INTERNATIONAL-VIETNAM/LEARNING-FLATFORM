@@ -14,7 +14,7 @@ import {
     Save,
     X,
 } from "lucide-react";
-import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ConfirmDialog } from "@/components/common";
 import {
     Select,
     SelectContent,

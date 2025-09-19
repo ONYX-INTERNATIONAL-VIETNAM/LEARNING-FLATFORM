@@ -1,7 +1,6 @@
 import type React from "react";
-import AdminHeader from "@/components/AdminHeader";
-import AdminSidebar from "@/components/AdminSidebar";
-import AuthGuard from "@/components/AuthGuard";
+import { AdminHeader, AdminSidebar } from "@/components/layout";
+import { AuthGuard } from "@/components/auth";
 
 export default function AdminLayout({
   children,

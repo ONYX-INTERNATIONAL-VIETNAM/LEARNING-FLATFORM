@@ -1,6 +1,6 @@
 import { Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import CourseCard from "@/components/CourseCard";
+import { CourseCard } from "@/components";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import {

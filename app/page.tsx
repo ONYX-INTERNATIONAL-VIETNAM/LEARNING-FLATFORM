@@ -1,16 +1,17 @@
 "use client";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import HeroSection from "@/components/HeroSection";
-import CoursesPreview from "@/components/CoursesPreview";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import CategoriesPreview from "@/components/CategoriesPreview";
-import Testimonials from "@/components/Testimonials";
-import CallToAction from "@/components/CallToAction";
-import Newsletter from "@/components/Newsletter";
-import { CartProvider } from "@/components/cart/CartContext";
-import FadeInSection from "@/components/FadeInSection";
+import { Header, Footer } from "@/components/layout";
+import { 
+  HeroSection, 
+  WhyChooseUs, 
+  CategoriesPreview, 
+  Testimonials, 
+  CallToAction, 
+  Newsletter 
+} from "@/components/features";
+import { CoursesPreview } from "@/components/course";
+import { CartProvider } from "@/components/features/cart/CartContext";
+import { FadeInSection } from "@/components/common";
 
 export default function HomePage() {
   return (

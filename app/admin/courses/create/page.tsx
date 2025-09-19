@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -38,7 +38,7 @@ export default function CreateCoursePage() {
     setValue,
     formState: { errors },
   } = useForm<CourseForm>({
-    resolver: zodResolver(courseSchema),
+    resolver: standardSchemaResolver(courseSchema),
     defaultValues: {
       status: "active",
     },

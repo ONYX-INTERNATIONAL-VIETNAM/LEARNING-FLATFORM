@@ -6,7 +6,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 
 const QuestionForm = dynamic(
-  () => import("@/components/question-bank/QuestionForm"),
+  () => import("@/components/features").then(mod => ({ default: mod.QuestionForm })),
   { ssr: false }
 );
 

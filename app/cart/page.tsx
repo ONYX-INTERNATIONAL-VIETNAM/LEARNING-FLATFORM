@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { Trash2, Star } from "lucide-react";
-import { CartProvider } from "@/components/cart/CartContext";
+import { CartProvider } from "@/components/features/cart/CartContext";
 import { Input } from "@/components/ui/input";
 
 

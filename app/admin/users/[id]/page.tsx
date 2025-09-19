@@ -27,10 +27,10 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ConfirmDialog } from "@/components/common";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 
 // ================= Schema =================
 const userSchema = z.object({
@@ -76,7 +76,7 @@ export default function UserDetailPage() {
     const [isEditing, setIsEditing] = useState(false);
 
     const form = useForm<UserFormData>({
-        resolver: zodResolver(userSchema),
+        resolver: standardSchemaResolver(userSchema),
         defaultValues: {
             name: user.name,
             email: user.email,

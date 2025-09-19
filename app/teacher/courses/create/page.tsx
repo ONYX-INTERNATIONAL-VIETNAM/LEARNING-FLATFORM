@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CourseForm from "@/components/course-builder/CourseForm";
-import SectionBuilder from "@/components/course-builder/SectionBuilder";
+import { CourseForm, SectionBuilder } from "@/components/course";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Save, Eye } from "lucide-react";

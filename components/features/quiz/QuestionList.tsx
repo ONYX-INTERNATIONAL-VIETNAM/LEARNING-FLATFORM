@@ -46,7 +46,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { ConfirmDialog } from "../ConfirmDialog";
+import { ConfirmDialog } from "@/components/common";
 import Link from "next/link";
 
 // ====================== FAKE DATA ======================

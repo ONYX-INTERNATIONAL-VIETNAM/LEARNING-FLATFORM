@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Header, Footer } from "@/components/layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +16,7 @@ import {
     Lock,
     LogOut,
 } from "lucide-react";
-import { CartProvider } from "@/components/cart/CartContext";
+import { CartProvider } from "@/components/features/cart/CartContext";
 
 // ==== Fake Auth Hook ====
 function useUser() {
@@ -113,6 +112,8 @@ function CheckoutInner() {
                                         src={user.avatar}
                                         alt={user.name}
                                         className="w-12 h-12 rounded-full"
+                                        width={48}
+                                        height={48}
                                     />
                                     <div className="flex-1">
                                         <p className="font-semibold">{user.name}</p>
@@ -148,6 +149,8 @@ function CheckoutInner() {
                                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                                                 alt="Google"
                                                 className="w-4 h-4"
+                                                width={16}
+                                                height={16}
                                             />
                                             Google
                                         </Button>
@@ -159,6 +162,8 @@ function CheckoutInner() {
                                                 src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
                                                 alt="Facebook"
                                                 className="w-4 h-4"
+                                                width={16}
+                                                height={16}
                                             />
                                             Facebook
                                         </Button>
