@@ -1,6 +1,6 @@
 import { Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CourseCard } from "@/components";
+import CourseCard from "@/components/course/cards/CourseCard";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import {
@@ -76,10 +76,10 @@ const StudentCoursesPage = () => {
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input placeholder="Tìm kiếm khóa học..." className="pl-10" />
+          <Input placeholder="Tìm kiếm khóa học..." className="pl-10 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm" />
         </div>
         <Select>
-          <SelectTrigger className="w-full sm:w-48">
+          <SelectTrigger className="w-full sm:w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
             <SelectValue placeholder="Lọc theo cấp độ" />
           </SelectTrigger>
           <SelectContent>
@@ -90,7 +90,7 @@ const StudentCoursesPage = () => {
           </SelectContent>
         </Select>
         <Select>
-          <SelectTrigger className="w-full sm:w-48">
+          <SelectTrigger className="w-full sm:w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
             <SelectValue placeholder="Sắp xếp theo" />
           </SelectTrigger>
           <SelectContent>

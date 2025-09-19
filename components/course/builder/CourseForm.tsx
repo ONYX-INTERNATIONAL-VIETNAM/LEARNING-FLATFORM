@@ -84,6 +84,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                 }
                 placeholder="Nhập tên khóa học"
                 required
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
 
@@ -97,6 +98,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                 }
                 placeholder="VD: MATH101"
                 required
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
 
@@ -108,7 +110,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                   setFormData({ ...formData, category: value })
                 }
               >
-                <SelectTrigger>
+                <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                   <SelectValue placeholder="Chọn danh mục" />
                 </SelectTrigger>
                 <SelectContent>
@@ -131,6 +133,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                 }
                 placeholder="Mô tả ngắn gọn về khóa học"
                 rows={3}
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
           </CardContent>
@@ -171,6 +174,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
             }
             placeholder="Mô tả chi tiết về nội dung, mục tiêu và yêu cầu của khóa học"
             rows={6}
+            className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
           />
         </CardContent>
       </Card>
@@ -192,6 +196,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                   onChange={(e) =>
                     setFormData({ ...formData, startDate: e.target.value })
                   }
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
               </div>
               <div className="space-y-2">
@@ -203,6 +208,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                   onChange={(e) =>
                     setFormData({ ...formData, endDate: e.target.value })
                   }
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                 />
               </div>
             </div>
@@ -217,6 +223,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                   setFormData({ ...formData, maxStudents: e.target.value })
                 }
                 placeholder="Để trống nếu không giới hạn"
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
 
@@ -229,6 +236,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                   setFormData({ ...formData, enrollmentKey: e.target.value })
                 }
                 placeholder="Mã để học sinh tự đăng ký"
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
             </div>
           </CardContent>
@@ -288,6 +296,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ formData, setFormData }) => {
                 onKeyPress={(e) =>
                   e.key === "Enter" && (e.preventDefault(), addTag())
                 }
+                className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
               />
               <Button type="button" onClick={addTag} variant="outline">
                 <Plus className="w-4 h-4" />

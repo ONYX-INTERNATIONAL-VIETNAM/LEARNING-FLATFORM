@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Star } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 // Fake data khóa học
 const courses = [
@@ -39,7 +41,8 @@ export default function ReviewsPage() {
   const [selectedCourse, setSelectedCourse] = useState<string>("");
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState("");
-
+  const router = useRouter();
+  
   const handleSubmit = () => {
     if (!selectedCourse || rating === 0 || !comment.trim()) return;
 
@@ -60,6 +63,15 @@ export default function ReviewsPage() {
 
   return (
     <div className="p-6 space-y-6">
+        <Button
+    variant="outline"
+    size="sm"
+    onClick={() => router.back()}
+    className="flex items-center gap-2"
+  >
+    <ArrowLeft className="h-4 w-4" />
+    Quay lại
+  </Button>
       {/* Form đánh giá */}
       <Card>
         <CardHeader>
@@ -68,7 +80,7 @@ export default function ReviewsPage() {
         <CardContent className="space-y-4">
           {/* Chọn khóa học */}
           <Select value={selectedCourse} onValueChange={setSelectedCourse}>
-            <SelectTrigger>
+            <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
               <SelectValue placeholder="Chọn khóa học" />
             </SelectTrigger>
             <SelectContent>
@@ -99,6 +111,7 @@ export default function ReviewsPage() {
             placeholder="Viết nhận xét của bạn..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
           />
 
           {/* Submit */}

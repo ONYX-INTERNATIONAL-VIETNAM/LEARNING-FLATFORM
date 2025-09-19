@@ -14,7 +14,7 @@ const StudentHeader = () => {
           {/* Search */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Tìm kiếm khóa học..." className="w-64 pl-10" />
+            <Input placeholder="Tìm kiếm khóa học..." className="w-64 pl-10 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm" />
           </div>
 
           {/* Notifications */}

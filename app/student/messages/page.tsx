@@ -86,7 +86,7 @@ export default function MessagesPage() {
             <div className="w-1/3 border-r bg-white flex flex-col">
                 <div className="p-3 border-b flex items-center gap-2">
                     <Search className="h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Tìm kiếm" className="h-8" />
+                    <Input placeholder="Tìm kiếm" className="h-8 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm" />
                 </div>
                 <ScrollArea className="flex-1">
                     {conversations.map((c) => (
@@ -165,6 +165,7 @@ export default function MessagesPage() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                        className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
                     />
                     <Button size="icon" onClick={handleSend} disabled={!input.trim()}>
                         <Send className="h-4 w-4" />

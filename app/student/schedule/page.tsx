@@ -135,7 +135,7 @@ const SchedulePage = () => {
           value={calendarView}
           onValueChange={(val) => setCalendarView(val)}
         >
-          <SelectTrigger className="w-[120px]">
+          <SelectTrigger className="w-[120px] bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
             <SelectValue placeholder="Chế độ" />
           </SelectTrigger>
           <SelectContent>
@@ -150,7 +150,7 @@ const SchedulePage = () => {
           defaultValue="all"
           onValueChange={(val) => setCourseFilter(val)}
         >
-          <SelectTrigger className="w-[200px]">
+          <SelectTrigger className="w-[200px] bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
             <SelectValue placeholder="Chọn khóa học" />
           </SelectTrigger>
           <SelectContent>

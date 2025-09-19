@@ -1,4 +1,4 @@
-import { ClassCard } from "@/components";
+import ClassCard from "@/components/common/cards/ClassCard"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Search, Plus } from "lucide-react";
+import Link from "next/link";
 
 const allClasses = [
   {
@@ -59,20 +60,22 @@ const TeacherClassesPage = () => {
             Theo dõi và quản lý tất cả lớp học của bạn
           </p>
         </div>
-        <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-          <Plus className="h-4 w-4 mr-2" />
-          Tạo lớp học mới
-        </Button>
+        <Link href="/teacher/classes/create">
+          <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Plus className="h-4 w-4 mr-2" />
+            Tạo lớp học mới
+          </Button>
+        </Link>
       </div>
 
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input placeholder="Tìm kiếm lớp học..." className="pl-10" />
+          <Input placeholder="Tìm kiếm lớp học..." className="pl-10 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm" />
         </div>
         <Select>
-          <SelectTrigger className="w-full sm:w-48">
+          <SelectTrigger className="w-full sm:w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
             <SelectValue placeholder="Lọc theo môn học" />
           </SelectTrigger>
           <SelectContent>
@@ -83,7 +86,7 @@ const TeacherClassesPage = () => {
           </SelectContent>
         </Select>
         <Select>
-          <SelectTrigger className="w-full sm:w-48">
+          <SelectTrigger className="w-full sm:w-48 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
             <SelectValue placeholder="Trạng thái" />
           </SelectTrigger>
           <SelectContent>

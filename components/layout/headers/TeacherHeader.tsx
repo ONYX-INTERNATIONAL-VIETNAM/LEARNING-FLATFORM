@@ -7,6 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 const TeacherHeader = () => {
   return (
@@ -22,7 +23,7 @@ const TeacherHeader = () => {
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder="Tìm kiếm học sinh, lớp học..."
-              className="w-64 pl-10"
+              className="w-64 pl-10 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
             />
           </div>
 
@@ -38,10 +39,15 @@ const TeacherHeader = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Khóa học mới</DropdownMenuItem>
-              <DropdownMenuItem>Lớp học mới</DropdownMenuItem>
-              <DropdownMenuItem>Bài tập mới</DropdownMenuItem>
-              <DropdownMenuItem>Thông báo</DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/teacher/courses/create">Khóa học mới</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/teacher/classes/create">Lớp học mới</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/teacher/assignments/create">Bài tập mới</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
