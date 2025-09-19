@@ -14,7 +14,7 @@ export * from './common';
 export * from './features';
 
 // UI primitives
-export * from './ui';
+// export * from './ui'; // Commented out as the module is missing
 
 // Admin components
-export * from './admin';
+// export * from './admin'; // Commented out as the module is missing

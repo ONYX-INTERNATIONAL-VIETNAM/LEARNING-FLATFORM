@@ -41,13 +41,10 @@ import {
   CheckCircle,
   FileText,
   MessageSquare,
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
 } from "lucide-react";
 import { ConfirmDialog } from "@/components/common";
 import Link from "next/link";
+import Pagination from "@/components/common/Pagination";
 
 // ====================== FAKE DATA ======================
 const questions: Question[] = [
@@ -159,7 +156,6 @@ const QuestionList = () => {
   }, [searchTerm, categoryFilter, typeFilter]);
 
   // ====================== PAGINATION ======================
-  const totalPages = Math.ceil(filteredQuestions.length / pageSize);
   const paginatedQuestions = filteredQuestions.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
@@ -463,45 +459,12 @@ const QuestionList = () => {
           </Table>
 
           {/* Pagination */}
-          <div className="flex justify-between items-center mt-6">
-            <p className="text-sm text-gray-500">
-              Trang {currentPage} / {totalPages}
-            </p>
-            <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setCurrentPage(1)}
-                disabled={currentPage === 1}
-              >
-                <ChevronsLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setCurrentPage(totalPages)}
-                disabled={currentPage === totalPages}
-              >
-                <ChevronsRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+          <Pagination
+            page={currentPage}
+            total={filteredQuestions.length}
+            pageSize={pageSize}
+            onPageChange={setCurrentPage}
+          />
         </CardContent>
       </Card>
     </div>

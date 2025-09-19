@@ -1,1 +1,1 @@
-export { default as CartContext } from './CartContext';
+export * from './CartContext';

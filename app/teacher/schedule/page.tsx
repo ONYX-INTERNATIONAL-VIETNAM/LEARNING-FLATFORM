@@ -31,6 +31,7 @@ import {
   Pencil,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import type { CalendarApi } from "@fullcalendar/core";
 
 // ==== Fake Events (initial) ====
 const initialEvents = [
@@ -96,7 +97,7 @@ const SchedulePage = () => {
 
   useEffect(() => {
     if (calendarRef.current) {
-      const api = (calendarRef.current as any).getApi();
+      const api: CalendarApi = calendarRef.current.getApi();
       api.changeView(calendarView);
     }
   }, [calendarView]);

@@ -21,7 +21,7 @@ export default function Pagination({ page, total, pageSize, onPageChange }: Pagi
   if (totalPages <= 1) return null; // chỉ hiển thị khi có nhiều hơn 1 trang
 
   return (
-    <div className="flex justify-between items-center px-6 py-4 border-t">
+    <div className="flex justify-between items-center  py-4 border-t">
       <p className="text-sm text-gray-500">
         Trang {page}/{totalPages}
       </p>

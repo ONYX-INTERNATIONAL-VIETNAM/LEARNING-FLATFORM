@@ -17,23 +17,12 @@ import {
     Search,
     UserPlus,
     Eye,
-    Edit,
-    MoreHorizontal,
     Users,
     Filter,
-    ChevronLeft,
-    ChevronRight,
-    ChevronsLeft,
-    ChevronsRight,
 } from "lucide-react";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { ConfirmDialog } from "@/components/common";
+import Pagination from "@/components/common/Pagination";
 
 // ====================== TYPES ======================
 interface User {
@@ -375,35 +364,17 @@ export default function UsersPage() {
                                                             <ActionButton icon={<Eye className="h-4 w-4" />} />
                                                         </Link>
                                                         {/* Dropdown menu cho More actions */}
-                                                        <DropdownMenu>
-                                                            <DropdownMenuTrigger asChild>
-                                                                <Button
-                                                                    size="sm"
-                                                                    variant="ghost"
-                                                                    className="h-8 w-8 p-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                                                                >
-                                                                    <MoreHorizontal className="h-4 w-4" />
-                                                                </Button>
-                                                            </DropdownMenuTrigger>
-                                                            <DropdownMenuContent align="end" className="w-40">
-                                                                <DropdownMenuItem className="flex items-center gap-2 mb-1">
-                                                                    <Link href={`/admin/users/${user.id}`} className="flex items-center gap-2">
-                                                                        <Edit className="h-4 w-4" />
-                                                                        <span className="text-sm">Chỉnh sửa</span>
-                                                                    </Link>
-                                                                </DropdownMenuItem>
-                                                                <ConfirmDialog
-                                                                    title="Xóa người dùng"
-                                                                    description={`Bạn có chắc chắn muốn xóa ${user.name}? Hành động này không thể hoàn tác.`}
-                                                                    onConfirm={() => {
-                                                                        console.log("Đã xóa user:", user.id);
-                                                                        // TODO: gọi API hoặc setUsers(users.filter(u => u.id !== user.id))
-                                                                    }}
-                                                                    triggerLabel="Xóa người dùng"
-                                                                />
+                                                        <ConfirmDialog
+                                                            title="Xóa người dùng"
+                                                            description={`Bạn có chắc chắn muốn xóa ${user.name}? Hành động này không thể hoàn tác.`}
+                                                            onConfirm={() => {
+                                                                console.log("Đã xóa user:", user.id);
+                                                                // TODO: gọi API xóa user
+                                                            }}
+                                                            triggerVariant="ghost"
+                                                            triggerLabel="" // chỉ hiện icon
+                                                        />
 
-                                                            </DropdownMenuContent>
-                                                        </DropdownMenu>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -422,47 +393,12 @@ export default function UsersPage() {
 
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="flex justify-between items-center px-6 py-4 border-t">
-                                <p className="text-sm text-gray-500">
-                                    Trang {currentPage}/{totalPages}
-                                </p>
-                                <div className="flex gap-2">
-                                    <Button
-                                        size="sm"
-                                        variant="outline"
-                                        onClick={() => setCurrentPage(1)}
-                                        disabled={currentPage === 1}
-                                    >
-                                        <ChevronsLeft className="h-4 w-4" />
-                                    </Button>
-                                    <Button
-                                        size="sm"
-                                        variant="outline"
-                                        onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                                        disabled={currentPage === 1}
-                                    >
-                                        <ChevronLeft className="h-4 w-4" />
-                                    </Button>
-                                    <Button
-                                        size="sm"
-                                        variant="outline"
-                                        onClick={() =>
-                                            setCurrentPage((p) => Math.min(totalPages, p + 1))
-                                        }
-                                        disabled={currentPage === totalPages}
-                                    >
-                                        <ChevronRight className="h-4 w-4" />
-                                    </Button>
-                                    <Button
-                                        size="sm"
-                                        variant="outline"
-                                        onClick={() => setCurrentPage(totalPages)}
-                                        disabled={currentPage === totalPages}
-                                    >
-                                        <ChevronsRight className="h-4 w-4" />
-                                    </Button>
-                                </div>
-                            </div>
+                            <Pagination
+                                page={currentPage}
+                                total={filteredUsers.length}
+                                pageSize={pageSize}
+                                onPageChange={setCurrentPage}
+                            />
                         )}
                     </CardContent>
                 </Card>

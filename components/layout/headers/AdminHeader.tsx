@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 
 function AdminHeader() {
   const user = getCurrentUser();
@@ -40,7 +41,7 @@ function AdminHeader() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
             placeholder="Search for users, courses ..."
-            className="pl-10 w-80"
+            className="pl-10 w-80 bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm"
           />
         </div>
       </div>
@@ -54,23 +55,33 @@ function AdminHeader() {
               className="gap-2 bg-transparent"
             >
               <Plus className="w-4 h-4" />
-              Create
+              Tạo mới
             </Button>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuItem>
-              <User className="w-4 h-4 mr-2" />
-              Tạo người dùng
+            <DropdownMenuItem asChild>
+              <Link href="/admin/users/create">
+                <User className="w-4 h-4 mr-2" />
+                Tạo người dùng
+              </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <BookOpen className="w-4 h-4 mr-2" />
-              Tạo khóa học
+
+            <DropdownMenuItem asChild>
+              <Link href="/admin/courses/create">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Tạo khóa học
+              </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <FileText className="w-4 h-4 mr-2" />
-              Tạo câu hỏi
+
+            <DropdownMenuItem asChild>
+              <Link href="/admin/question-bank/create">
+                <FileText className="w-4 h-4 mr-2" />
+                Tạo câu hỏi
+              </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
+
         </DropdownMenu>
 
         <Button variant="ghost" size="sm" className="relative">

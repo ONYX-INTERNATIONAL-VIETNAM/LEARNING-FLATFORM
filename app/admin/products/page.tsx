@@ -6,10 +6,6 @@ import {
     Eye,
     BookOpen,
     FileText,
-    ChevronsLeft,
-    ChevronsRight,
-    ChevronLeft,
-    ChevronRight,
 } from "lucide-react";
 import {
     Card,
@@ -44,6 +40,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { ConfirmDialog } from "@/components/common";
+import Pagination from "@/components/common/Pagination";
 
 type Product = {
     id: string;
@@ -74,7 +71,6 @@ export default function ProductListPage() {
     // state phân trang
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 5;
-    const totalPages = Math.ceil(products.length / pageSize);
 
     const paginatedProducts = products.slice(
         (currentPage - 1) * pageSize,
@@ -221,45 +217,12 @@ export default function ProductListPage() {
                         </Table>
 
                         {/* Pagination */}
-                        <div className="flex justify-between items-center mt-6">
-                            <p className="text-sm text-gray-500">
-                                Trang {currentPage} / {totalPages}
-                            </p>
-                            <div className="flex gap-2">
-                                <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={() => setCurrentPage(1)}
-                                    disabled={currentPage === 1}
-                                >
-                                    <ChevronsLeft className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                                    disabled={currentPage === 1}
-                                >
-                                    <ChevronLeft className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                                    disabled={currentPage === totalPages}
-                                >
-                                    <ChevronRight className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={() => setCurrentPage(totalPages)}
-                                    disabled={currentPage === totalPages}
-                                >
-                                    <ChevronsRight className="h-4 w-4" />
-                                </Button>
-                            </div>
-                        </div>
+                        <Pagination
+                            page={currentPage}
+                            total={products.length}
+                            pageSize={pageSize}
+                            onPageChange={setCurrentPage}
+                        />
                     </CardContent>
                 </Card>
             </div>

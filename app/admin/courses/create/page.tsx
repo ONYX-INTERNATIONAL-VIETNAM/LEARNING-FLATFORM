@@ -13,7 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { BookPlus } from "lucide-react";
+import { BookPlus, ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // ====================== SCHEMA ======================
 const courseSchema = z.object({
@@ -48,16 +49,27 @@ export default function CreateCoursePage() {
     console.log("New course:", data);
     alert("Khóa học mới đã được tạo!");
   };
+  const router = useRouter();
 
   return (
     <div className="min-h-screen p-6 bg-slate-50 dark:bg-slate-900">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <Card className="shadow-lg">
-          <CardHeader>
+          <CardHeader className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white">
               <BookPlus className="h-5 w-5" />
               Tạo khóa học mới
             </CardTitle>
+            {/* Nút Back */}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => router.back()}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Quay lại
+            </Button>
           </CardHeader>
 
           <CardContent>

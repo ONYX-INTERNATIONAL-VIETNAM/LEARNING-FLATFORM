@@ -142,7 +142,7 @@ export default function CreateUserPage() {
                   }
                   defaultValue="Học sinh"
                 >
-                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
+                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm w-full">
                     <SelectValue placeholder="Chọn vai trò" />
                   </SelectTrigger>
                   <SelectContent>
@@ -164,7 +164,7 @@ export default function CreateUserPage() {
                   }
                   defaultValue="active"
                 >
-                  <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
+                  <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                     <SelectValue placeholder="Chọn trạng thái" />
                   </SelectTrigger>
                   <SelectContent>

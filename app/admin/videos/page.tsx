@@ -1,3 +1,5 @@
+"use client";
+
 import { VideoLibrary } from "@/components/course";
 
 const AdminVideosPage = () => {

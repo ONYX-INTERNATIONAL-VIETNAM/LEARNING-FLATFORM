@@ -80,7 +80,7 @@ export default function AssignmentDetailPage() {
       s.grade !== null ? s.grade : "",
     ]);
 
-    let csvContent =
+    const csvContent =
       header.join(",") +
       "\n" +
       rows.map((r) => r.map((c) => `"${c}"`).join(",")).join("\n");

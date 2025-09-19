@@ -202,7 +202,7 @@ export function ProductForm({
               value={form.language}
               onValueChange={(v) => setForm({ ...form, language: v })}
             >
-              <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
+              <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue placeholder="Chọn ngôn ngữ" />
               </SelectTrigger>
               <SelectContent>
@@ -217,7 +217,7 @@ export function ProductForm({
               value={form.level}
               onValueChange={(v) => setForm({ ...form, level: v })}
             >
-              <SelectTrigger className="bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
+              <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-900 rounded-md shadow-sm">
                 <SelectValue placeholder="Chọn cấp độ" />
               </SelectTrigger>
               <SelectContent>
@@ -278,4 +278,3 @@ export function ProductForm({
     </Card>
   );
 }
-true
