@@ -71,29 +71,64 @@ function CheckoutInner() {
     return (
         <main className="flex-1 container mx-auto px-6 py-12">
             {/* === Progress Steps === */}
-            <div className="flex justify-center mb-12">
-                <div className="flex items-center gap-8 text-sm">
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-semibold">
+            <div className="max-w-2xl mx-auto mb-12">
+                {/* Desktop / Tablet: horizontal */}
+                <ol className="hidden sm:flex items-center w-full">
+                    {/* Step 1 */}
+                    <li className="flex items-center flex-1 relative">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white font-semibold z-10">
                             1
                         </div>
-                        <span className="font-semibold text-accent">Đăng nhập</span>
-                    </div>
-                    <div className="w-12 h-px bg-gray-300" />
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-semibold">
+                        <span className="ml-2 text-sm font-medium text-accent">Đăng nhập</span>
+                        <div className="flex-1 h-0.5 bg-accent mx-4" />
+                    </li>
+
+                    {/* Step 2 */}
+                    <li className="flex items-center flex-1 relative">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600 font-semibold z-10">
                             2
                         </div>
-                        <span className="text-gray-600">Thanh toán</span>
-                    </div>
-                    <div className="w-12 h-px bg-gray-300" />
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-semibold">
+                        <span className="ml-2 text-sm font-medium text-gray-600">Thanh toán</span>
+                        <div className="flex-1 h-0.5 bg-gray-300 mx-4" />
+                    </li>
+
+                    {/* Step 3 */}
+                    <li className="flex items-center relative">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600 font-semibold z-10">
                             3
                         </div>
-                        <span className="text-gray-600">Hoàn tất</span>
-                    </div>
-                </div>
+                        <span className="ml-2 text-sm font-medium text-gray-600">Hoàn tất</span>
+                    </li>
+                </ol>
+
+                {/* Mobile: vertical */}
+                <ol className="flex flex-col gap-6 sm:hidden justify-center">
+                    {/* Step 1 */}
+                    <li className="flex items-center gap-3 relative">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white font-semibold">
+                            1
+                        </div>
+                        <span className="text-sm font-medium text-accent">Đăng nhập</span>
+                        <div className="absolute left-4 top-8 bottom-[-24px] w-0.5 bg-accent" />
+                    </li>
+
+                    {/* Step 2 */}
+                    <li className="flex items-center gap-3 relative">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600 font-semibold">
+                            2
+                        </div>
+                        <span className="text-sm font-medium text-gray-600">Thanh toán</span>
+                        <div className="absolute left-4 top-8 bottom-[-24px] w-0.5 bg-gray-300" />
+                    </li>
+
+                    {/* Step 3 */}
+                    <li className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-300 text-gray-600 font-semibold">
+                            3
+                        </div>
+                        <span className="text-sm font-medium text-gray-600">Hoàn tất</span>
+                    </li>
+                </ol>
             </div>
 
             {/* === Main Content === */}
@@ -106,26 +141,37 @@ function CheckoutInner() {
                             <Mail className="h-5 w-5 text-accent" />
                             1. Đăng nhập hoặc tạo tài khoản
                         </h2>
-                        <Card className="p-6 space-y-6 border shadow-sm">
+                        <Card className="p-6 space-y-1 border shadow-sm">
                             {user ? (
-                                <div className="flex items-center gap-4">
-                                    <Image
-                                        src={user.avatar}
-                                        alt={user.name}
-                                        className="w-12 h-12 rounded-full"
-                                    />
-                                    <div className="flex-1">
-                                        <p className="font-semibold">{user.name}</p>
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-lg bg-gray-50 border">
+                                    {/* Avatar */}
+                                    <div className="flex-shrink-0 flex justify-center sm:justify-start">
+                                        <Image
+                                            src={user.avatar}
+                                            alt={user.name}
+                                            width={56}
+                                            height={56}
+                                            className="rounded-full ring-2 ring-white shadow"
+                                        />
+                                    </div>
+
+                                    {/* Info */}
+                                    <div className="flex-1 text-center sm:text-left">
+                                        <p className="font-semibold text-base">{user.name}</p>
                                         <p className="text-sm text-muted-foreground">{user.email}</p>
                                     </div>
-                                    <Button
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() => setUser(null)}
-                                        className="flex items-center gap-1"
-                                    >
-                                        <LogOut className="h-4 w-4" /> Đăng xuất
-                                    </Button>
+
+                                    {/* Logout button */}
+                                    <div className="flex justify-center sm:justify-end w-full sm:w-auto">
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            onClick={() => setUser(null)}
+                                            className="flex items-center gap-1 w-full sm:w-auto"
+                                        >
+                                            <LogOut className="h-4 w-4" /> Đăng xuất
+                                        </Button>
+                                    </div>
                                 </div>
                             ) : (
                                 <>
@@ -145,9 +191,10 @@ function CheckoutInner() {
                                             className="flex items-center gap-2 justify-center py-3 rounded-md shadow-sm"
                                         >
                                             <Image
-                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
+                                                src="/images/Google.svg.png"
                                                 alt="Google"
-                                                className="w-4 h-4"
+                                                width={16}
+                                                height={16}
                                             />
                                             Google
                                         </Button>
@@ -156,9 +203,10 @@ function CheckoutInner() {
                                             className="flex items-center gap-2 justify-center py-3 rounded-md shadow-sm"
                                         >
                                             <Image
-                                                src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                                                src="/images/Facebook.svg.png"
                                                 alt="Facebook"
-                                                className="w-4 h-4"
+                                                width={16}
+                                                height={16}
                                             />
                                             Facebook
                                         </Button>
@@ -181,21 +229,21 @@ function CheckoutInner() {
                                 className="space-y-3"
                             >
                                 <label className="flex items-center gap-2 cursor-pointer">
-                                    <RadioGroupItem value="card" id="pm-card" className="bg-white border border-gray-300"/>
+                                    <RadioGroupItem value="card" id="pm-card" className="bg-white border border-gray-300" />
                                     <span className="flex items-center gap-2">
                                         <CreditCard className="h-4 w-4 text-gray-500" /> Thẻ
                                         tín dụng/Ghi nợ
                                     </span>
                                 </label>
                                 <label className="flex items-center gap-2 cursor-pointer">
-                                    <RadioGroupItem value="wallet" id="pm-wallet" className="bg-white border border-gray-300"/>
+                                    <RadioGroupItem value="wallet" id="pm-wallet" className="bg-white border border-gray-300" />
                                     <span className="flex items-center gap-2">
                                         <Wallet className="h-4 w-4 text-gray-500" /> Ví điện tử
                                         (Momo, ZaloPay)
                                     </span>
                                 </label>
                                 <label className="flex items-center gap-2 cursor-pointer">
-                                    <RadioGroupItem value="bank" id="pm-bank" className="bg-white border border-gray-300"/>
+                                    <RadioGroupItem value="bank" id="pm-bank" className="bg-white border border-gray-300" />
                                     <span className="flex items-center gap-2">
                                         <Landmark className="h-4 w-4 text-gray-500" /> Chuyển
                                         khoản ngân hàng
