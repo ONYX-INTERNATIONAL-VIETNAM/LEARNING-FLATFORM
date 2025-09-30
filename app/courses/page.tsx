@@ -238,7 +238,7 @@ export default function CoursesPage() {
         </section>
 
         {/* Nội dung – cần chồng nhẹ lên phần cong */}
-        <div className="container relative z-10 -mt-4 md:-mt-6 mx-auto px-16 py-8">
+        <div className="container relative z-10 -mt-4 md:-mt-6 mx-auto px-4 sm:px-6 lg:px-16 py-8">
           <CoursesGrid />
         </div>
       </main>

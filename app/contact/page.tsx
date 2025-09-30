@@ -52,7 +52,7 @@ export default function ContactPage() {
                     </section>
 
                     {/* FORM + INFO */}
-                    <section className="container mx-auto px-16 grid md:grid-cols-2 gap-12">
+                    <section className="container mx-auto px-8 md:px-16 grid md:grid-cols-2 gap-12">
                         {/* FORM */}
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}

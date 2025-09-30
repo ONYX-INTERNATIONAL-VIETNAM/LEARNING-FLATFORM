@@ -171,7 +171,7 @@ export default function CoursesCarousel() {
         </div>
 
         {/* Carousel */}
-        <div className="relative">
+        <div className="relative -mx-16 md:mx-0">
           <Carousel>
             {COURSES.map((c) => (
               <CarouselItem key={c.id}>

@@ -50,7 +50,7 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             variants={fadeInUp}
-            className="container mx-auto px-16 pb-16"
+            className="container mx-auto px-8 md:px-16 pb-16 "
           >
             <div className="grid md:grid-cols-12 items-center gap-12 md:gap-16">
               {/* Image LEFT */}
@@ -133,7 +133,7 @@ export default function AboutPage() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             variants={fadeInUp}
-            className="container mx-auto px-16 py-20"
+            className="container mx-auto px-8 md:px-16 py-20"
           >
             <h2 className="text-3xl md:text-4xl font-semibold text-center mb-16">
               Giá trị cốt lõi
