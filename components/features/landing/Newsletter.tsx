@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 export default function Newsletter() {
   return (
     // Đẩy chồng xuống footer: âm margin-bottom + z-index cao
-    <section className="relative z-50 -mb-24">
+    <section className="relative -mb-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl rounded-3xl bg-[var(--secondary-color)] px-6 py-10 md:px-10 text-center shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
           <h4 className="mb-2 text-xl md:text-2xl font-semibold text-white">

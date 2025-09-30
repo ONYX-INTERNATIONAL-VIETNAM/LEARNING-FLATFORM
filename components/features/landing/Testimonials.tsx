@@ -86,7 +86,6 @@ export default function Testimonials() {
                   h-full rounded-[22px]
                   ring-1 ring-black/5
                   text-white
-                  shadow-[0_8px_0_0_rgba(0,0,0,0.15)]
                   bg-gradient-to-b from-[#F5C53A] to-[#E3B11F]
                 "
               >

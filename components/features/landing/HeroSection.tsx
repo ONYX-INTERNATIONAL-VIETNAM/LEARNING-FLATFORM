@@ -60,7 +60,7 @@ const HeroSection = () => {
                 "
               >
                 <BookOpen className="mr-2 h-5 w-5" />
-                Bắt đầu học
+                Tham gia học ngay
               </Button>
 
               <Button

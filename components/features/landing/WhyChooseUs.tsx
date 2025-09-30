@@ -20,7 +20,7 @@ const leftFeatures: Feature[] = [
     iconSrc: "/images/home/Asset 95.svg",
     title: "Học tập tương tác –\nnhớ lâu hơn",
     desc:
-      "Kho hoạt động tương tác, game, quiz kiến thức… giúp kiến thức trở nên sinh động, gắn kết và dễ nhớ.",
+      "Kho hoạt động tương tác, game, quiz giúp kiến thức trở nên sinh động, gắn kết và dễ nhớ.",
   },
 ];
 
