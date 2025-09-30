@@ -1,16 +1,18 @@
+// components/sections/Testimonials.tsx
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { Carousel, CarouselItem } from "@/components/ui/carousel"; // 👈 dùng carousel bạn đã tạo
+import { Carousel, CarouselItem } from "@/components/ui/carousel";
+import { Quote } from "lucide-react";
 
-const items = [
-  {
-    name: "Lan Anh",
-    role: "Phụ huynh lớp 4",
-    avatar: "/images/avatar.jpg",
-    quote: "Bé rất thích các bài học có trò chơi. Điểm số cải thiện rõ rệt!",
-  },
+type TItem = {
+  name: string;
+  role: string;
+  avatar: string;
+  quote: string;
+};
+
+const items: TItem[] = [
   {
     name: "Minh Khoa",
     role: "Học sinh lớp 6",
@@ -21,53 +23,97 @@ const items = [
     name: "Cô Hạnh",
     role: "Giáo viên Toán",
     avatar: "/images/avatar.jpg",
-    quote: "Quản lý lớp và chấm bài tiện. Báo cáo giúp theo sát từng học sinh.",
+    quote:
+      "Quản lý lớp tốt và chấm bài tiện, báo cáo theo sát từng học sinh.",
   },
   {
     name: "Ngọc Mai",
     role: "Phụ huynh lớp 2",
     avatar: "/images/avatar.jpg",
-    quote: "Bé nhà mình học rất chăm nhờ hệ thống điểm thưởng. Rất hài lòng!",
+    quote:
+      "Bé nhà mình rất chăm nhờ hệ thống điểm thưởng. Rất hài lòng!",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="bg-background py-16 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+    <section className="relative overflow-hidden py-16 md:py-20">
+      {/* BG layer */}
+      <div
+        className="absolute inset-0 -z-10 bg-no-repeat bg-center"
+        style={{
+          backgroundImage: "url('/images/home/group-17.png')",
+          backgroundSize: "cover",
+        }}
+        aria-hidden
+      />
+
+      {/* icon chuông */}
+      <div className="flex justify-center mb-6">
+        <Image
+          src="/images/home/Asset 46.svg"
+          alt="Bell"
+          width={56}
+          height={56}
+          className="h-10 w-10 md:h-20 md:w-36"
+          priority
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
+        {/* chỉ 1 dấu ngoặc kép mở bên trái */}
+        <Quote
+          className="pointer-events-none absolute left-2  z-10 hidden md:block -scale-x-100 text-[var(--secondary-color)]"
+          size={72}
+        />
+
+        {/* tiêu đề + mô tả */}
+        <div className="mb-8 text-center md:mb-10">
+          <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-[var(--text-color)] font-montserrat">
             Phản hồi từ người dùng
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-[#4B4C4C]">
             Chia sẻ chân thực từ phụ huynh, học sinh và giáo viên đang sử dụng ONYX.
           </p>
         </div>
 
-        {/* Carousel */}
-        <Carousel options={{ align: "start", loop: true }}>
+        {/* CAROUSEL */}
+        <Carousel>
           {items.map(({ name, role, avatar, quote }, i) => (
             <CarouselItem key={i}>
-              <Card className="h-full border hover:border-accent transition">
-                <CardContent className="p-6 flex flex-col justify-between h-full">
-                  <div className="flex items-center gap-3 mb-4">
+              <div
+                className="
+                  h-full rounded-[22px]
+                  ring-1 ring-black/5
+                  text-white
+                  shadow-[0_8px_0_0_rgba(0,0,0,0.15)]
+                  bg-gradient-to-b from-[#F5C53A] to-[#E3B11F]
+                "
+              >
+                <div className="flex h-full flex-col p-5">
+                  <div className="mb-3 flex items-center gap-3">
                     <Image
                       src={avatar}
                       alt={name}
                       width={44}
                       height={44}
-                      className="rounded-full object-cover"
+                      className="h-11 w-11 rounded-full object-cover ring-2 ring-white/70"
                     />
                     <div>
-                      <div className="font-semibold leading-tight">{name}</div>
-                      <div className="text-xs text-muted-foreground">{role}</div>
+                      <div className="text-sm font-bold leading-tight text-white">
+                        {name}
+                      </div>
+                      <div className="text-[11px] leading-tight text-white/90">
+                        {role}
+                      </div>
                     </div>
                   </div>
-                  <p className="text-sm italic text-muted-foreground">
+
+                  <p className="mt-auto text-[13px] italic leading-relaxed text-white">
                     “{quote}”
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </CarouselItem>
           ))}
         </Carousel>

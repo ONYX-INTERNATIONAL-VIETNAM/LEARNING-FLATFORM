@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57.63 49.13">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-5 {
+        fill: #2eb8d7;
+      }
+
+      .cls-6 {
+        fill: #d2dce9;
+      }
+
+      .cls-7 {
+        fill: #114669;
+      }
+
+      .cls-8 {
+        fill: #07a6c6;
+      }
+
+      .cls-2 {
+        stroke: #402030;
+        stroke-width: 2.63px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-3 {
+        stroke: #ffc31f;
+        stroke-width: 1.31px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="57.63" height="49.13"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g class="cls-4">
+      <g>
+        <path class="cls-5" d="M43.2,5.3L9.98,16.79l6.68,19.16c.57,1.65,1.99,2.86,3.7,3.19l12.38,2.37c2.96,.56,5.99-.49,7.96-2.75l8.25-9.5c1.14-1.32,1.5-3.14,.92-4.79l-6.68-19.16h0Z"/>
+        <path class="cls-8" d="M9.98,16.79l6.05,17.35,15.87,3.03c2.48,.47,5.02-.41,6.67-2.31l10.62-12.22-6.04-17.32L9.98,16.79Z"/>
+        <path class="cls-7" d="M23.68,2.7l33.2,3.81,.75,2.16-22.74,26.19L.75,28.34l-.75-2.16L23.68,2.7Z"/>
+        <path class="cls-5" d="M22.74,0L56.88,6.51l-22.74,26.2L0,26.18,22.74,0Z"/>
+        <path class="cls-3" d="M28.25,16.75l13.24,7,.19,19.04"/>
+        <path class="cls-3" d="M40.99,48.55l-.06-5.9"/>
+        <path class="cls-3" d="M42.49,48.53l-.06-5.9"/>
+        <path class="cls-3" d="M41.65,40.62l.09,8.5"/>
+        <path class="cls-3" d="M40.19,48l-.05-5.34,3.08-.03,.05,5.25"/>
+        <path class="cls-2" d="M41.63,37.88l.04,3.62"/>
+        <path class="cls-7" d="M29.06,18.11c.91-.31,1.45-1.11,1.22-1.79-.23-.67-1.16-.96-2.07-.65-.91,.32-1.45,1.11-1.22,1.79,.23,.67,1.16,.96,2.07,.65Z"/>
+        <path class="cls-6" d="M28.87,17.57c.91-.31,1.45-1.11,1.22-1.79-.23-.68-1.16-.96-2.07-.65-.91,.32-1.45,1.11-1.22,1.79,.23,.67,1.16,.96,2.07,.65Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

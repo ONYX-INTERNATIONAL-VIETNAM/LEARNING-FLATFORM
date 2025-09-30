@@ -15,7 +15,14 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import { CartProvider, useCart } from "@/components/features/cart/CartContext";
 import Link from "next/link";
-import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink } from "@/components/ui/pagination";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationLink,
+} from "@/components/ui/pagination";
 import { Card } from "@/components/ui/card";
 
 interface Course {
@@ -41,14 +48,15 @@ const allCourses: Course[] = Array.from({ length: 18 }).map((_, i) => ({
   duration: `${4 + (i % 3)} tuần`,
   students: 1000 + i * 13,
   level: i % 2 === 0 ? "Cơ bản" : "Trung cấp",
-  levelColor: i % 2 === 0 ? "bg-blue-100 text-blue-800" : "bg-purple-100 text-purple-800",
+  levelColor:
+    i % 2 === 0 ? "bg-blue-100 text-blue-800" : "bg-purple-100 text-purple-800",
 }));
 
 function CoursesGrid() {
   const { addItem } = useCart();
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState("popular"); // sort state
+  const [sort, setSort] = useState("popular");
   const [activeCat, setActiveCat] = useState("all");
 
   const perPage = 6;
@@ -61,22 +69,18 @@ function CoursesGrid() {
     { id: "science", name: "Khoa học" },
   ];
 
-  // lọc theo danh mục
   let filtered = allCourses.filter((c) =>
     c.title.toLowerCase().includes(search.toLowerCase())
   );
   if (activeCat !== "all") {
-    filtered = filtered.filter((c) => c.level.toLowerCase().includes(activeCat));
+    filtered = filtered.filter((c) =>
+      c.level.toLowerCase().includes(activeCat)
+    );
   }
 
-  // sắp xếp
-  if (sort === "price-asc") {
-    filtered.sort((a, b) => a.price - b.price);
-  } else if (sort === "price-desc") {
-    filtered.sort((a, b) => b.price - a.price);
-  } else if (sort === "new") {
-    filtered.sort((a, b) => Number(b.id) - Number(a.id)); // giả định id lớn hơn là mới hơn
-  }
+  if (sort === "price-asc") filtered.sort((a, b) => a.price - b.price);
+  else if (sort === "price-desc") filtered.sort((a, b) => b.price - a.price);
+  else if (sort === "new") filtered.sort((a, b) => Number(b.id) - Number(a.id));
 
   const totalPages = Math.ceil(filtered.length / perPage);
   const paginated = filtered.slice((page - 1) * perPage, page * perPage);
@@ -93,8 +97,8 @@ function CoursesGrid() {
                 <Button
                   variant="ghost"
                   className={`w-full justify-start rounded-lg ${activeCat === cat.id
-                      ? "bg-accent text-accent-foreground font-semibold"
-                      : "hover:bg-accent/10"
+                    ? "bg-accent text-accent-foreground font-semibold"
+                    : "hover:bg-accent/10"
                     }`}
                   onClick={() => {
                     setActiveCat(cat.id);
@@ -206,26 +210,35 @@ function CoursesGrid() {
   );
 }
 
-
 export default function CoursesPage() {
   return (
     <CartProvider>
       <Header />
-      <main className="flex-1">
-        {/* HERO */}
-        <div className="relative bg-gradient-to-r from-accent/10 to-transparent py-20 text-center space-y-6 mb-12"
-        >
-          <div className="container mx-auto px-6 text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Cửa hàng khóa học
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Khám phá, chọn mua và bắt đầu hành trình học tập của bạn ngay hôm nay
-            </p>
-          </div>
-        </div>
+      <main className="flex-1 overflow-x-hidden">
+        <section className="relative">
+          {/* Ảnh full-bleed không gây scroll ngang */}
+          <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+            <img
+              src="/images/home/Background.png"  // đổi đúng path ảnh PNG/WebP của bạn trong /public
+              alt=""
+              className="block w-screen h-auto select-none pointer-events-none"
+              draggable={false}
+            />
 
-        <div className="container mx-auto px-4 py-8">
+            {/* TEXT: góc trên-trái của màn hình */}
+            <div className="absolute z-10 left-4 top-4 md:left-8 md:top-8">
+              <h1 className="text-amber-500 font-extrabold text-3xl md:text-5xl leading-tight text-center">
+                Cửa hàng khóa học
+              </h1>
+              <p className="mt-2 max-w-xl text-sm md:text-base text-slate-600 text-center">
+                Khám phá, chọn mua và bắt đầu hành trình học tập của bạn ngay hôm nay
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Nội dung – cần chồng nhẹ lên phần cong */}
+        <div className="container relative z-10 -mt-4 md:-mt-6 mx-auto px-16 py-8">
           <CoursesGrid />
         </div>
       </main>

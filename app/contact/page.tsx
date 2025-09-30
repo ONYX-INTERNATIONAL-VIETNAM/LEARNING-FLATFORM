@@ -27,21 +27,32 @@ export default function ContactPage() {
         <CartProvider>
             <div className="min-h-screen flex flex-col">
                 <Header />
-                <main className="flex-1">
+                <main className="flex-1 overflow-hidden">
                     {/* HERO */}
-                    <div className="bg-gradient-to-r from-accent/10 to-transparent py-20 text-center space-y-6"
-                    >
-                        <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                            Liên hệ với ONYX
-                        </h1>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Bạn có thắc mắc hoặc muốn hợp tác? Gửi ngay thông tin cho chúng tôi,
-                            đội ngũ ONYX sẽ phản hồi nhanh nhất.
-                        </p>
-                    </div>
+                    <section className="relative">
+                        {/* Ảnh full-bleed không gây scroll ngang */}
+                        <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+                            <img
+                                src="/images/home/Background-contact.png"  // đổi đúng path ảnh PNG/WebP của bạn trong /public
+                                alt=""
+                                className="block w-screen h-auto select-none pointer-events-none"
+                                draggable={false}
+                            />
+
+                            {/* TEXT: góc trên-trái của màn hình */}
+                            <div className="absolute z-10 left-4 top-4 md:left-8 md:top-8">
+                                <h1 className="text-amber-500 font-extrabold text-3xl md:text-5xl leading-tight text-center">
+                                    Khám phá ONYX
+                                </h1>
+                                <p className="mt-2 max-w-xl text-sm md:text-base text-slate-600 text-center">
+                                    Nền tảng học tập & thương mại điện tử hiện đại - kết nối tri thức, cộng đồng và cơ hội
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
                     {/* FORM + INFO */}
-                    <section className="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+                    <section className="container mx-auto px-16 grid md:grid-cols-2 gap-12">
                         {/* FORM */}
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
@@ -49,10 +60,10 @@ export default function ContactPage() {
                             transition={{ duration: 0.6 }}
                             variants={fadeInUp}
                         >
-                            <Card className="rounded-2xl shadow-lg flex py-20">
+                            <Card className="rounded-2xl shadow-lg flex py-20 bg-[var(--secondary-color)] text-white">
                                 <CardContent className="m-auto w-full space-y-6">
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-gray-700">
+                                        <label className="text-sm font-medium">
                                             Họ và tên
                                         </label>
                                         <Input
@@ -66,7 +77,7 @@ export default function ContactPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-gray-700">
+                                        <label className="text-sm font-medium">
                                             Email
                                         </label>
                                         <Input
@@ -81,7 +92,7 @@ export default function ContactPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-gray-700">
+                                        <label className="text-sm font-medium">
                                             Nội dung
                                         </label>
                                         <Textarea
@@ -95,7 +106,7 @@ export default function ContactPage() {
                                         />
                                     </div>
 
-                                    <Button className="w-full py-6 text-base rounded-md">
+                                    <Button className="w-full py-6 text-base rounded-md bg-[var(--primary-color)]">
                                         Gửi liên hệ
                                     </Button>
                                 </CardContent>

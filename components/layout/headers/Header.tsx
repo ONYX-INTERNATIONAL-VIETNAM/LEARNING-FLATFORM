@@ -48,23 +48,23 @@ export default function Header() {
 
         {/* Actions */}
         <div className="hidden md:flex items-center gap-2">
-          <Button asChild variant="outline" size="icon" className="relative ml-1">
+          <Button asChild variant="outline" size="icon" className="relative ml-1 hover:bg-[var(--primary-color)]">
             <Link href="/cart" aria-label="Giỏ hàng">
               <ShoppingCart className="h-5 w-5" />
               {count > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 min-w-[20px] px-1 rounded-full bg-accent text-accent-foreground text-[10px] font-bold flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 h-5 min-w-[20px] px-1 rounded-full bg-[var(--primary-color)] text-accent-foreground text-[10px] font-bold flex items-center justify-center">
                   {count}
                 </span>
               )}
             </Link>
           </Button>
-          <Button asChild variant="outline" size="sm">
+          <Button asChild variant="outline" size="sm" className="hover:bg-[var(--primary-color)]">
             <Link href="/login">Đăng nhập</Link>
           </Button>
           <Button
             asChild
             size="sm"
-            className="bg-accent text-accent-foreground hover:bg-accent/90"
+            className="bg-[rgba(245,158,11,0.72)] hover:bg-[var(--primary-color)] text-accent-foreground"
           >
             <Link href="/register">Đăng ký</Link>
           </Button>
