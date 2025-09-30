@@ -15,7 +15,7 @@ export default function Newsletter() {
           </p>
 
           <form
-            className="mx-auto flex w-full max-w-2xl flex-col gap-3 sm:flex-row sm:items-center"
+            className="relative z-20 pointer-events-auto mx-auto flex w-full max-w-2xl flex-col gap-3 sm:flex-row sm:items-center"
             onSubmit={(e) => {
               e.preventDefault();
               // TODO: handle submit
