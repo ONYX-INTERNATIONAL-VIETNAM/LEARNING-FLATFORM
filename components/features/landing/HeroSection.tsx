@@ -19,7 +19,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-white/40 md:bg-white/30" />
 
       {/* content */}
-      <div className="relative container mx-auto px-16">
+      <div className="relative container mx-auto md:px-16 px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-28 items-start">
           
           {/* Cột trái */}
@@ -36,14 +36,14 @@ const HeroSection = () => {
                 className="
                   text-4xl md:text-5xl lg:text-5xl font-extrabold leading-[56px]
                   text-[var(--secondary-color)] wrap-break-word
-                  mb-4 md:mb-6 font-montserrat
+                  mb-4 md:mb-6 font-montserrat text-center md:text-left
                 "
               >
                 Học tập trực tuyến <br/><span className="text-[var(--primary-color)]">vui nhộn</span>{" "}
                 cho trẻ em toàn thế giới
               </h1>
 
-              <p className="text-[--var(text-color)] text-base md:text-lg leading-relaxed max-w-2xl">
+              <p className="text-[--var(text-color)] text-base md:text-lg leading-relaxed max-w-2xl md:text-left text-center">
                 Nền tảng giáo dục ONYX mang đến trải nghiệm học tập tương tác,
                 thú vị và dễ tiếp cận cho học sinh và giáo viên trên khắp thế giới.
               </p>
@@ -86,7 +86,7 @@ const HeroSection = () => {
               bg-[rgba(17,24,39,0.3)] text-white
               rounded-[28px] p-6 md:p-10
               shadow-[4px_4px_4px_0_rgba(0,0,0,0.25)]
-              flex flex-col justify-center
+              flex flex-col justify-center mb-16 md:mb-0
             "
           >
             <ul className="space-y-4">

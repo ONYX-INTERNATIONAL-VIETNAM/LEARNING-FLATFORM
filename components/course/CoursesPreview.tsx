@@ -211,7 +211,7 @@ export default function CoursesCarousel() {
                           </span>
                         </li>
                         <li className="flex items-center gap-2 justify-between">
-                        <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-1">
                             <User className="h-4 w-4" />
                             <span>{c.teacher}</span>
                           </div>
@@ -222,20 +222,22 @@ export default function CoursesCarousel() {
                         </li>
                       </ul>
 
-                      <div className="flex items-center justify-between mt-5">
-                        <div className="flex items-center text-[14px] text-slate-600">
+                      <div className="mt-5 block sm:flex sm:items-center sm:justify-between">
+                        <div className="flex items-center text-[13px] sm:text-[14px] text-slate-600 mb-3 sm:mb-0">
                           <Star className="h-4 w-4 mr-1 fill-[#F6C646] text-[#F6C646]" />
                           <span>{c.rating}</span>
                         </div>
 
                         <button
-                          className="rounded-full bg-[#F6C646] hover:bg-[#f3bb2a] text-[#3b3b3b]
-                             text-[13px] font-semibold px-5 py-2
-                             shadow-[0_6px_18px_rgba(246,198,70,0.4)] hover:scale-110 transition"
+                          className="w-full sm:w-auto rounded-full bg-[#F6C646] sm:hover:bg-[#f3bb2a] text-[#3b3b3b]
+               text-[13px] font-semibold px-5 py-2
+               shadow-[0_6px_18px_rgba(246,198,70,0.4)]
+               transition sm:hover:scale-110"
                         >
                           Tham gia ngay
                         </button>
                       </div>
+
                     </CardContent>
                   </Card>
                 </div>

@@ -69,29 +69,6 @@ export default function WhyChooseUs() {
 
         {/* Wrapper relative để đặt logo tuyệt đối ở giữa trên lg+ */}
         <div className="relative">
-          {/* Logo cho MOBILE (hiển thị trong luồng) */}
-          <div className="flex justify-center mb-10 lg:hidden">
-            <Image
-              src="/images/onyx-logo.webp"
-              alt="ONYX"
-              width={160}
-              height={160}
-              className="w-[120px] h-auto"
-              priority
-            />
-          </div>
-
-          {/* Logo cho DESKTOP: tuyệt đối giữa section */}
-          <div className="hidden lg:flex pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Image
-              src="/images/onyx-logo.webp"
-              alt="ONYX"
-              width={300}
-              height={300}
-              className="w-[280px] h-auto"
-              priority
-            />
-          </div>
 
           {/* Hai cột tính năng hai bên */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-y-0 lg:gap-x-24">
