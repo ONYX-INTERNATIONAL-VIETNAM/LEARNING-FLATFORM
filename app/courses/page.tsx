@@ -230,7 +230,7 @@ export default function CoursesPage() {
               <h1 className="text-amber-500 font-extrabold text-3xl md:text-5xl leading-tight text-center">
                 Cửa hàng khóa học
               </h1>
-              <p className="mt-2 max-w-xl text-sm md:text-base text-slate-600 text-center">
+              <p className="mt-2 max-w-xl text-sm md:text-base text-[#4B4C4C] text-center">
                 Khám phá, chọn mua và bắt đầu hành trình học tập của bạn ngay hôm nay
               </p>
             </div>

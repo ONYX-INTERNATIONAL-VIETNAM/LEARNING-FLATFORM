@@ -161,7 +161,7 @@ export default function CoursesCarousel() {
               className="w-36 h-20"
             />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 font-montserrat">
+          <h2 className="text-2xl md:text-4xl font-bold mb-2 font-montserrat">
             Khóa học phổ biến
           </h2>
           <p className="text-[#4B4C4C] max-w-2xl mx-auto">
@@ -171,7 +171,7 @@ export default function CoursesCarousel() {
         </div>
 
         {/* Carousel */}
-        <div className="relative -mx-16 md:mx-0">
+        <div className="relative -mx-14 md:mx-0">
           <Carousel>
             {COURSES.map((c) => (
               <CarouselItem key={c.id}>

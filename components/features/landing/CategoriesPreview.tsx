@@ -26,7 +26,7 @@ export default function CategoriesPreview() {
             />
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">Danh mục phổ biến</h2>
+          <h2 className="text-2xl md:text-4xl font-bold mb-2">Danh mục phổ biến</h2>
           <p className="text-[#4B4C4C] max-w-2xl mx-auto text-sm md:text-base">
             Khám phá các lĩnh vực học tập đa dạng, phù hợp với mọi lứa tuổi và cấp độ.
           </p>

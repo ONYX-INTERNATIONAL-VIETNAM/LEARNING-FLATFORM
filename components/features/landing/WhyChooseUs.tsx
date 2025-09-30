@@ -59,7 +59,7 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10 lg:mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-color)] font-montserrat">
+          <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-[var(--text-color)] font-montserrat">
             Điểm nổi bật của ONYX
           </h2>
           <p className="mt-2 text-[#4B4C4C]">

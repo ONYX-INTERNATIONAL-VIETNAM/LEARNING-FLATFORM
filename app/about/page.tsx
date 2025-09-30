@@ -36,7 +36,7 @@ export default function AboutPage() {
                 <h1 className="text-amber-500 font-extrabold text-3xl md:text-5xl leading-tight text-center">
                   Khám phá ONYX
                 </h1>
-                <p className="mt-2 max-w-xl text-sm md:text-base text-slate-600 text-center">
+                <p className="mt-2 max-w-xl text-sm md:text-base text-[#4B4C4C] text-center">
                   Nền tảng học tập & thương mại điện tử hiện đại - kết nối tri thức, cộng đồng và cơ hội
                 </p>
               </div>
