@@ -52,17 +52,32 @@ export default function CartPage() {
       <div className="flex flex-col min-h-screen">
         <Header />
         {/* HERO */}
-        <div className="bg-gradient-to-r from-accent/10 to-transparent py-20 text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Giỏ hàng của bạn
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Kiểm tra lại các khóa học bạn đã thêm vào giỏ trước khi thanh toán
-          </p>
-        </div>
+        <main className="flex-1 overflow-x-hidden">
+          <section className="relative">
+            {/* Ảnh full-bleed không gây scroll ngang */}
+            <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+              <img
+                src="/images/home/Background.png"  // đổi đúng path ảnh PNG/WebP của bạn trong /public
+                alt=""
+                className="block w-screen h-auto select-none pointer-events-none"
+                draggable={false}
+              />
+
+              {/* TEXT: góc trên-trái của màn hình */}
+              <div className="absolute z-10 left-4 top-4 md:left-8 md:top-8">
+                <h1 className="text-amber-500 font-extrabold text-3xl md:text-5xl leading-tight text-center">
+                  Giỏ hàng của bạn
+                </h1>
+                <p className="mt-2 max-w-xl text-sm md:text-base text-[#4B4C4C] text-center">
+                  Kiểm tra các khoá học bạn đã thêm vào giỏ trước khi thanh toán
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
 
         {/* MAIN */}
-        <main className="flex-1 container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+        <main className="flex-1 container mx-auto px-6 md:px-16 grid md:grid-cols-3 gap-8">
           {/* LEFT - Cart Items */}
           <div className="md:col-span-2 space-y-6">
             <h2 className="text-2xl font-bold mb-6">Các khóa học trong giỏ</h2>
@@ -101,6 +116,7 @@ export default function CartPage() {
                   size="icon"
                   onClick={() => removeItem(item.id)}
                   aria-label="Xóa sản phẩm"
+                  className="self-center"
                 >
                   <Trash2 className="h-5 w-5 text-destructive" />
                 </Button>
@@ -152,7 +168,7 @@ export default function CartPage() {
         </main>
 
         {/* Recommended Carousel */}
-        <section className="container mx-auto px-6 py-12">
+        <section className="container mx-auto px-6 md:px-16 py-12">
           <h2 className="text-2xl font-bold mb-6">Khóa học được gợi ý</h2>
           <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4">
             {RECOMMENDED.map((c) => (
@@ -186,7 +202,7 @@ export default function CartPage() {
         </section>
 
         {/* Recently Viewed Carousel */}
-        <section className="container mx-auto px-6 pb-16">
+        <section className="container mx-auto px-6 md:px-16 pb-16">
           <h2 className="text-2xl font-bold mb-6">Khóa học bạn vừa xem</h2>
           <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4">
             {RECENTLY_VIEWED.map((c) => (

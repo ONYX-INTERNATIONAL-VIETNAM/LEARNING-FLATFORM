@@ -15,7 +15,7 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
       <div className="absolute top-6 left-6 z-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-accent hover:text-accent-foreground bg-accent/10 hover:bg-accent/20 rounded-full transition-all duration-200"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--primary-color)] bg-accent/10 hover:bg-accent/20 rounded-full transition-all duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-foreground">{title}</h2>
+            <h2 className="text-3xl font-bold text-[var(--primary-color)]">{title}</h2>
             <p className="mt-2 text-muted-foreground">{subtitle}</p>
           </div>
           {children}
@@ -46,7 +46,10 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
       </div>
 
       {/* Right side - Illustration */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-accent/20 via-muted/30 to-accent/10 items-center justify-center p-8">
+      <div
+        className="hidden lg:flex flex-1 items-center justify-center p-8 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/home/Vector 5.png')" }}
+      >
         <div className="text-center max-w-md">
           <div className="w-80 h-80 mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl">
             <Image
