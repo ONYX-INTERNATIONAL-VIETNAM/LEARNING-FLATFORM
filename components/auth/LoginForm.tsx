@@ -68,11 +68,11 @@ const LoginForm = () => {
   };
 
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-[var(--primary-color)]/80 text-white font-montserrat">
       <CardHeader className="space-y-1">
         <div className="text-center">
           <h3 className="text-lg font-semibold">Chào mừng trở lại!</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm">
             Đăng nhập để tiếp tục hành trình học tập
           </p>
         </div>
@@ -81,7 +81,7 @@ const LoginForm = () => {
           <p className="text-xs font-medium text-blue-800 mb-2">
             Tài khoản demo:
           </p>
-          <div className="text-xs tex-blue-700 space-y-1">
+          <div className="text-xs text-blue-700 space-y-1">
             <div>Học sinh: student@onyx.edu / Student123!</div>
             <div>Giáo viên: teacher@onyx.edu / Teacher123!</div>
             <div>Admin: admin@onyx.edu / Admin123!</div>
@@ -109,6 +109,7 @@ const LoginForm = () => {
                 setFormData({ ...formData, email: e.target.value })
               }
               required
+               className="bg-white text-gray-900 placeholder:text-gray-500 border-none focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           </div>
 
@@ -124,6 +125,7 @@ const LoginForm = () => {
                   setFormData({ ...formData, password: e.target.value })
                 }
                 required
+                className="bg-white text-gray-900 placeholder:text-gray-500 border-none focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
               />
               <Button
                 type="button"
@@ -150,13 +152,13 @@ const LoginForm = () => {
                   setFormData({ ...formData, remember: checked as boolean })
                 }
               />
-              <Label htmlFor="remember" className="text-sm">
+              <Label htmlFor="remember" className="text-sm text-white font-bold">
                 Ghi nhớ đăng nhập
               </Label>
             </div>
             <Link
               href="/forgot-password"
-              className="text-sm text-accent hover:underline"
+              className="text-sm text-[var(--secondary-color)] font-bold hover:underline"
             >
               Quên mật khẩu?
             </Link>
@@ -166,17 +168,17 @@ const LoginForm = () => {
         <CardFooter className="flex flex-col space-y-4 mt-4">
           <Button
             type="submit"
-            className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+            className="w-full bg-[var(--secondary-color)] text-white"
             disabled={!formData.email || !formData.password}
           >
             {isLoading ? "Đang đăng nhập..." : "Đăng nhập"}
           </Button>
 
           <div className="text-center text-sm">
-            <span className="text-muted-foreground">Chưa có tài khoản? </span>
+            <span className="text-white font-bold">Chưa có tài khoản? </span>
             <Link
               href="/register"
-              className="text-accent hover:underline font-medium"
+              className="text-[var(--secondary-color)] font-bold hover:underline"
             >
               Đăng ký ngay
             </Link>
